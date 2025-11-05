@@ -7,5 +7,10 @@ module.exports = {
     theme: {
         extend: {},
     },
+    themes: {
+        dark: {
+            backgroundColor: '#121212',
+        },
+    },
     plugins: [],
 }
