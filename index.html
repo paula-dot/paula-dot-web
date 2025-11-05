@@ -1,13 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>paula-dot-web</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Akelo</title>
+    <link rel="stylesheet" href="styles/main.css">
+
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <h1 class="logo">
+                <a href="index.html" class="brand">
+                    <img src="assets/images/paula_dot_icon.png" alt="Paula-dot logo" />
+                </a>
+            </h1>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero bg-gradient-to-r from-[#bf1cff] to-[#007185]">
+        <div class="hero-text">
+            <h2>Hello, I'm Paul Akelo</h2>
+            <p>Aspiring data scientist and GIS developer building impacting visuals and insights.</p>
+            <a href="projects.html" class="btn">View my work</a>
+        </div>
+    </section>
+
+    <section class="skills">
+        <h3>Key Skills</h3>
+        <div class="skills-grid">
+            <div class="skill-card">HTML & CSS</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">Python</div>
+            <div class="skill-card">SQL</div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2024 Paul Akelo. All rights reserved.</p>
+</footer>
+
+<script type="module" src="/src/main.js"></script>
+
+</body>
 </html>

@@ -35,6 +35,15 @@ header {
    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
+header .container {
+    max-width: none;
+    padding: 0 0;
+}
+
+header .navbar {
+    padding: 2px 80px 2px 30px;
+}
+
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -101,11 +110,11 @@ header {
 
 .hero{
     height: 50vh;
-    background: linear-gradient(to right, #bf1cff, #007185);
+   /* background: linear-gradient(to right, #bf1cff, #007185); */
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    /* color: #ffffff; */
     text-align: match-parent;
     padding: 2rem;
 }
