@@ -110,11 +110,11 @@ header .navbar {
 
 .hero{
     height: 50vh;
-    background: linear-gradient(to right, #bf1cff, #007185);
+   /* background: linear-gradient(to right, #bf1cff, #007185); */
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    /* color: #ffffff; */
     text-align: match-parent;
     padding: 2rem;
 }
