@@ -5,11 +5,13 @@ module.exports = {
         "./*.html"
     ],
     theme: {
-        extend: {},
-    },
-    themes: {
-        dark: {
-            backgroundColor: '#121212',
+        extend: {
+            colors: {
+                bg: "hsl(var(--bg))",
+                fg: "hsl(var(--fg))",
+                brand: "hsl(var(--brand))",
+                accent: "hsl(var(--accent))",
+            }
         },
     },
     plugins: [],
