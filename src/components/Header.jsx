@@ -12,7 +12,7 @@ export function Header() {
                         </NavLink>
                     </h1>
                     <ul className="nav-links">
-                        <li><NavLink to="/" className="active">Home</NavLink></li>
+                        <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/about">About</NavLink></li>
                         <li><NavLink to="/projects">Projects</NavLink></li>
                         <li><NavLink to="/contact">Contact</NavLink></li>

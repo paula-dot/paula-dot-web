@@ -1,5 +1,6 @@
 import {Header} from "../components/Header.jsx";
 import {Footer} from "../components/Footer.jsx";
+import { Link } from "react-router-dom";
 
 export function HomePage() {
     return (
@@ -14,7 +15,7 @@ export function HomePage() {
                 <div className="hero-text">
                     <h2>Hello, I'm Paul Akelo</h2>
                     <p>Aspiring data scientist and GIS developer building impacting visuals and insights.</p>
-                    <a href="/projects.html" className="btn">View my work</a>
+                    <Link to="/projects" className="btn">View my work</Link>
                 </div>
             </section>
 
