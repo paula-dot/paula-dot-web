@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Urban Growth GIS Model — Oyugis",
+    "description": "Satellite-based urban expansion detection using QGIS, GRASS GIS, and ML.",
+    "tags": ["GIS", "Remote Sensing", "ML"]
+  },
+  {
+    "title": "County GDP Visualizer",
+    "description": "Interactive dashboard analyzing county-level GDP and socio-economic trends.",
+    "tags": ["Data Science", "Visualization", "D3.js"]
+  },
+  {
+    "title": "Finetic",
+    "description": "Django + Go microservices for a personal AI-driven financial tracker.",
+    "tags": ["Python", "Go", "Django"]
+  }
+]
+

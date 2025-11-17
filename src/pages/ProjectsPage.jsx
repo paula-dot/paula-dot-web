@@ -1,10 +1,11 @@
+import Projects from "../components/Projects/Projects";
 import './ProjectsPage.css'
 
 export function ProjectsPage() {
     return (
         <>
          <title>Projects</title>
-
+        { /*
         <main className="page projects">
             <div className="page-inner">
             <section className="project-intro">
@@ -33,6 +34,8 @@ export function ProjectsPage() {
             </section>
             </div>
         </main>
+        */}
+        <Projects />
         </>
     );
 }
