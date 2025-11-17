@@ -95,6 +95,28 @@ header .navbar {
     mix-blend-mode: multiply;
 }
 
+/* Header nav link hover/focus: more visible on header backgrounds */
+.header .nav-links a {
+    color: inherit;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.header .nav-links a:hover,
+.header .nav-links a:focus {
+    /* warm sand for visible contrast on teal/green backgrounds */
+    color: hsl(var(--map-sand));
+    background: rgba(255,255,255,0.06);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    outline: none;
+}
+
+.header .nav-links a:focus {
+    /* strong focus ring for keyboard users */
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.08), 0 4px 12px rgba(0,0,0,0.08);
+}
+
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
     header,
