@@ -1,0 +1,21 @@
+{
+  "GIS": [
+    "QGIS",
+    "GRASS GIS",
+    "Spatial Analysis"
+  ],
+  "Software Development": [
+    "Python",
+    "Go",
+    "JavaScript",
+    "React"
+  ],
+
+  "Data Science": [
+    "Pandas",
+    "Numpy"
+  ]
+
+
+
+}
