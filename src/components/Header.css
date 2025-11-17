@@ -1,12 +1,12 @@
 @keyframes earthyGradient {
     0% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
     50% {
         background-position: 100% 50%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 }
 
@@ -47,4 +47,110 @@ header .navbar {
     padding: 0;
     box-shadow: none;
     background: transparent;
+}
+
+/* --- Moved from styles/main.css: theme-driven header class + presets --- */
+.header {
+    /* keep header content readable and layer animated backgrounds via pseudo-elements */
+    position: relative;
+    z-index: 1; /* keep content above animated backgrounds */
+    overflow: visible;
+    color: hsl(var(--map-paper)); /* readable text that flips with theme */
+    transition: color 300ms ease, background-color 300ms ease, background-image 300ms ease;
+    transform-origin: center;
+    background: none; /* clear element background; pseudo-elements provide gradients */
+    /* No transform wobble: color-only oscillation handled by pseudo-elements */
+
+    /* control the color animation duration in one place */
+    --header-color-duration: 28s; /* slightly faster than previous 30s */
+}
+
+/* two animated layers that crossfade to morph header color */
+.header::before,
+.header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1; /* sit behind content */
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    border-radius: inherit;
+    /* crossfade animation: use variable for easy tweaking */
+    animation: header-color-fade var(--header-color-duration) ease-in-out infinite;
+    transition: opacity 500ms ease, filter 300ms ease;
+}
+
+/* offset the second layer so they crossfade out of phase (half of duration) */
+.header::after {
+    animation-delay: calc(var(--header-color-duration) / 2);
+}
+
+/* Per-preset gradient pairs (use your existing palette variables) */
+.header--water::before {
+    background-image: linear-gradient(135deg,
+        hsl(var(--map-water)) 0%,
+        hsl(var(--map-fern)) 100%);
+}
+.header--water::after {
+    background-image: linear-gradient(135deg,
+        hsl(var(--map-river)) 0%,
+        color-mix(in srgb, hsl(var(--map-fern)) 80%, hsl(var(--map-water)) 20%) 100%);
+}
+
+.header--water-deep::before {
+    background-image: linear-gradient(135deg,
+        hsl(var(--map-water-deep)) 0%,
+        hsl(var(--map-moss)) 100%);
+}
+.header--water-deep::after {
+    background-image: linear-gradient(135deg,
+        hsl(var(--map-water)) 0%,
+        hsl(var(--map-moss)) 70%,
+        hsl(var(--map-fern)) 100%);
+}
+
+.header--forest::before {
+    background-image: linear-gradient(135deg,
+        hsl(var(--map-forest)) 0%,
+        hsl(var(--map-stone)) 60%,
+        hsl(var(--map-sand)) 100%);
+}
+.header--forest::after {
+    background-image: linear-gradient(135deg,
+        color-mix(in srgb, hsl(var(--map-forest)) 85%, hsl(var(--map-moss)) 15%) 0%,
+        hsl(var(--map-stone)) 70%,
+        hsl(var(--map-sand)) 100%);
+}
+
+.header a, .header .nav-links a, .header .logo {
+    color: inherit;
+}
+
+/* Small overlay to improve contrast when needed (kept as separate rule if you need it) */
+.header--overlay::after {
+    background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0));
+    mix-blend-mode: multiply;
+}
+
+/* Keyframes: color fade only (opacity), no transforms to avoid movement */
+@keyframes header-color-fade {
+    0%   { opacity: 1; filter: saturate(1); }
+    50%  { opacity: 0.2; filter: saturate(1.02); }
+    100% { opacity: 1; filter: saturate(1); }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    header,
+    .header,
+    .header::before,
+    .header::after {
+        animation: none !important;
+        transition: none !important;
+    }
+    .header::before,
+    .header::after {
+        opacity: 1;
+    }
 }
