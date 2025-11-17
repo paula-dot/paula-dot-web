@@ -28,6 +28,22 @@ html, body, #root {
     height: 100%;
 }
 
+/* Make the React root a column flex container so header/main/footer inside it can be arranged vertically.
+   This ensures pages that render Header, main, Footer as siblings will allow `main` to grow and push the footer down. */
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Homepage uses an inner wrapper `.page-root`; make it expand as well so its inner <main> can grow and push footer. */
+.page-root {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    min-height: 0; /* allow children to scroll when overflowing */
+}
+
 body{
     min-height: 100vh;
     display: flex;
@@ -40,8 +56,9 @@ body{
     color: hsl(var(--fg));
 }
 
+/* make main grow to fill available space between header and footer */
 main {
-    flex: 1;
+    flex: 1 0 auto;
 }
 
 main.page,
@@ -52,38 +69,10 @@ main.page,
     color: inherit;
 }
 
-header {
-   position: relative;
-   padding: 12px 0;
-   margin-bottom: 16px;
-   border: 1px solid #e5e7eb;
-   border-bottom: none;
-   border-radius: 0 0 12px 12px;
-   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-}
-
-header .container {
-    max-width: none;
-    padding: 0 0;
-}
-
-header .navbar {
-    padding: 2px 80px 2px 30px;
-}
-
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 16px;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    box-shadow: none;
-    background: transparent;
 }
 
 .logo {
@@ -194,14 +183,6 @@ header .navbar {
 
 .skill-card:hover {
     transform: translateY(-5px);
-}
-
-.footer {
-    background-color: #0b132b;
-    color: #e0e6f0;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: auto;
 }
 
 @media (max-width: 768px) {
