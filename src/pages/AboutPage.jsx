@@ -6,6 +6,7 @@ export function AboutPage() {
             <title>About</title>
 
             <main className="page about">
+                <div className="page-inner">
                 <section className="intro">
                     <h2>About me</h2>
                     <p>
@@ -22,6 +23,7 @@ export function AboutPage() {
                         I’m also fascinated by design, music, and innovative data storytelling.
                     </p>
                 </section>
+                </div>
             </main>
         </>
     );

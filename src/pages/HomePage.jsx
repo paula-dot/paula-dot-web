@@ -6,9 +6,8 @@ export function HomePage() {
         <>
         <title>Paul Akelo</title>
 
-        <div className="page-root bg-bg text-fg">
-
         <main className="page home">
+            <div className="page-inner">
             <section className="hero bg-gradient-to-r from-[#bf1cff] to-[#007185]">
                 <div className="hero-text">
                     <h2>Hello, I'm Paul Akelo</h2>
@@ -26,8 +25,8 @@ export function HomePage() {
                     <div className="skill-card">SQL</div>
                 </div>
             </section>
+            </div>
         </main>
-        </div>
         </>
     );
 }

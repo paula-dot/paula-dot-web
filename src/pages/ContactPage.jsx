@@ -6,6 +6,7 @@ export function ContactPage() {
             <title>Contact</title>
 
             <main className="page contact">
+                <div className="page-inner">
                 <section className="contact-info">
                     <h2>Get in Touch</h2>
                     <p>
@@ -28,6 +29,7 @@ export function ContactPage() {
                         <button type="submit" className="btn">Send Message</button>
                     </form>
                 </section>
+                </div>
             </main>
         </>
     );
