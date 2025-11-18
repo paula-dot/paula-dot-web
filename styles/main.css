@@ -42,22 +42,6 @@
         --map-paper: 220 10% 6%;
     }
 
-    @layer components {
-        .btn {
-            @apply inline-block px-6 py-3 rounded-md text-map-paper bg-map-water transition transform;
-        }
-        .btn:hover, .btn:focus {
-            @apply -translate-y-0.5 shadow-lg;
-            background-color: hsl(var(--map-water-deep));
-        }
-        .card {
-            @apply bg-white rounded-xl shadow-card p-6 text-center transition-transform;
-        }
-        .logo-img {
-            @apply h-10 w-auto;
-        }
-    }
-
     /* Small helpers / preview swatches */
     .palette-row {
         display: flex;
