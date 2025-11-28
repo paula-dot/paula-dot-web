@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import './Footer.css'
 
 export function Footer() {
@@ -10,10 +9,11 @@ export function Footer() {
                 <ul className="social-links" aria-label="Social Links">
                     <li>
                         <a
-                            href="https: //linkedin.com/in/paul-akelo-377577291"
+                            href="https://www.linkedin.com/in/paul-akelo-377577291"
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="LinkedIn Profile (opens in new tab)"
+                            title="LinkedIn — Paul Akelo"
                         >
                             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.7v2.2h.1c.65-1.24 2.24-2.54 4.6-2.54 4.92 0 5.8 3.24 5.8 7.44V24h-5V15.5c0-2.02-.04-4.62-2.82-4.62-2.82 0-3.25 2.2-3.25 4.46V24h-5V8z" />
@@ -24,7 +24,7 @@ export function Footer() {
                     </li>
                     <li>
                         <a
-                            href="https://github.com/your-username"
+                            href="https://github.com/paula-dot"
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="GitHub (opens in new tab)"
