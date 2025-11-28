@@ -1,13 +1,18 @@
-import { Link } from "react-router-dom";
 import Hero from "../../components/Hero/Hero.jsx";
-import Skills from "../../components/Skills/Skills.jsx";
-import skillsData from "../../data/skills.json";
 import './HomePage.css'
 
 
 export function HomePage() {
+    const bgStyle = {
+        backgroundImage: `url('/assets/top-1.svg')`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center top',
+        backgroundSize: 'cover',
+        backgroundAttachment: 'scroll'
+    };
+
     return (
-        <div className="home-page">
+        <div className="home-page" style={bgStyle}>
         <title>Paul Akelo</title>
         {/*
         <main className="page home">

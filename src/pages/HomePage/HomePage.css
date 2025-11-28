@@ -15,18 +15,11 @@
     flex: 1 0 auto; /* grow to fill the available space inside <main> */
     min-height: 0;   /* allow children to scroll/overflow inside flex container */
 
-    /* Background image scoped to this page only. Served from `public/assets/top-1.svg` at runtime.
-       Use the absolute path so the file is loaded from the `public` folder: */
-    background-image: url('/assets/top-1.svg');
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-    background-attachment: scroll; /* avoid fixed viewport background so it stays between header/footer */
-    background-color: transparent; /* fallback */
+    /* Background image is set inline in the HomePage component to reference the public asset
+       `/assets/top-1.svg` at runtime while avoiding editor resolver errors in CSS. */
 }
 
 /* If you use a data-theme attribute on <html> or <body>, target it from the root instead of nesting. */
 [data-theme="dark"] .home-page {
-    /* Keep the same image for dark mode; served from public */
-    background-image: url('/assets/top-1.svg');
+    /* Any theme-specific background handling is applied inline in the component when needed. */
 }
