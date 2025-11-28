@@ -1,3 +1,5 @@
+import './Skills.css'
+
 export default function Skills({ data }) {
     return (
         <section className="skills-section" id="skills">

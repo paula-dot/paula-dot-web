@@ -4,7 +4,7 @@ import { Header } from './Header/Header.jsx'
 import { Footer } from './Footer/Footer.jsx'
 import './Header/Header.css'
 import './Footer/Footer.css'
-import './Button.css'
+import './Button/Button.css'
 
 export function Layout() {
   return (

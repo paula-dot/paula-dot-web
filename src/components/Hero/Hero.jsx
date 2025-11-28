@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import "../../pages/HomePage/HomePage.css";
+import "./Hero.css"
+// import "../../pages/HomePage/HomePage.css";
 
 export default function Hero() {
     return (

@@ -19,7 +19,29 @@
     outline: none;
 }
 
+.btn-primary:active { transform: translateY(1px); }
+
 .btn:focus {
     box-shadow: 0 0 0 4px rgba(0,113,133,0.12), 0 6px 18px rgba(0,0,0,0.12);
+}
+
+
+.btn-primary {
+    background-color: #047857;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.85rem 2.25rem;
+}
+
+.btn-secondary {
+    background-color: #fff;
+    border: 1px solid #cbd5f5;
+    border-radius: 999px;
+    padding: 0.85rem 2.25rem;
+    color: #0f172a;
+}
+
+@media (max-width: 600px) {
+    .btn { width: 100%; padding-left: 1rem; padding-right: 1rem; }
 }
 
