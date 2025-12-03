@@ -1,19 +1,48 @@
-.about {
+.page-about {
     min-height: 100%;
     color: inherit;
     background: transparent;
+    padding: 3rem 1.5rem;
 }
 
-/* layout-specific padding moved to .page-inner in styles/main.css */
+.page-about .page-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
 
-.about .intro {
+/* Section styling */
+.page-about section {
+    margin-bottom: 3rem;
+}
+
+.page-about section:last-child {
+    margin-bottom: 0;
+}
+
+.page-about h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #047857;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.page-about p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 1rem;
+}
+
+/* Intro section specific */
+.page-about .intro {
     display: flex;
     gap: 1.25rem;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.about .intro img {
+.page-about .intro img {
     width: 160px;
     height: auto;
     border-radius: 8px;
@@ -21,19 +50,25 @@
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-.about .bio {
-    flex: 1 1 300px;
-    line-height: 1.6;
-    color: #333;
-}
-
 @media (max-width: 600px) {
-    .about .intro {
+    .page-about {
+        padding: 2rem 1rem;
+    }
+
+    .page-about .intro {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .about .intro img {
+    .page-about .intro img {
         width: 120px;
+    }
+
+    .page-about h2 {
+        font-size: 1.75rem;
+    }
+
+    .page-about p {
+        font-size: 1rem;
     }
 }
