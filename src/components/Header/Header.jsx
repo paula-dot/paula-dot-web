@@ -8,7 +8,7 @@ export function Header() {
                 <nav className="navbar">
                     <h1 className="logo">
                         <NavLink to="/" className="brand" >
-                            <img src="/assets/images/paula_dot_icon.png" alt="Paula-dot logo"/>
+                            <img src="/assets/paula_dot_icon.png" alt="Paula-dot logo"/>
                         </NavLink>
                     </h1>
                     <ul className="nav-links">
