@@ -158,6 +158,27 @@
         color: hsl(var(--map-ink, 220 12% 96%)); /* Light text for dark background */
     }
 
+    /* Smooth scrolling for better UX */
+    html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Improve touch interactions on mobile */
+    @media (hover: none) and (pointer: coarse) {
+        /* Touch device specific styles */
+        a, button, .btn {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Slightly larger touch targets */
+        a, button {
+            min-height: 44px;
+            min-width: 44px;
+        }
+    }
+
     html, body, #root {
         height: 100%;
     }
@@ -337,6 +358,43 @@
                 600px 600px,
                 700px 700px,
                 100% 100%;
+        }
+
+        .container {
+            padding: 0 12px;
+        }
+
+        .page-inner {
+            padding: 1.5rem 0.75rem;
+        }
+    }
+
+    /* Mobile optimizations for small screens */
+    @media (max-width: 480px) {
+        .container {
+            padding: 0 8px;
+        }
+
+        .page-inner {
+            padding: 1.25rem 0.5rem;
+        }
+
+        /* Ensure text remains readable on small screens */
+        h1 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+        }
+
+        p {
+            font-size: clamp(0.9375rem, 3vw, 1rem);
+            line-height: 1.6;
         }
     }
 
