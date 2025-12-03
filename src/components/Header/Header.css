@@ -111,6 +111,7 @@ header .navbar {
 
 .nav-links a {
     text-decoration: none;
+    font-weight: 600;
     color: #0c0c0c;
     padding: 0.25rem 0.375rem;
     transition: color 0.15s ease;
@@ -119,10 +120,11 @@ header .navbar {
 
 .nav-links a.active {
     font-weight: 600;
+    color: hsl(var(--brand-gold));
 }
 
 .nav-links a:hover {
-    color: #007185;
+    color: hsl(var(--brand-gold));
 }
 
 /* Slightly more visible nav link styles when header backgrounds are used */
@@ -130,7 +132,20 @@ header .navbar {
     color: inherit;
     padding: 0.25rem 0.5rem;
     border-radius: 6px;
+    position: relative;
     transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.header .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: hsl(var(--brand-gold));
+    transition: width 200ms ease;
 }
 
 .header .nav-links a:hover,
@@ -138,14 +153,28 @@ header .navbar {
     /* warm sand for visible contrast on teal/green backgrounds */
     /* use brand gold for hover to reflect the logo without overpowering the palette */
     color: hsl(var(--brand-gold));
-    background: hsl(var(--brand-gold-muted) / 0.06);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background: hsl(var(--brand-gold-muted) / 0.15);
+    box-shadow: 0 4px 12px hsl(var(--brand-gold) / 0.2);
     outline: none;
+}
+
+.header .nav-links a:hover::after,
+.header .nav-links a:focus::after {
+    width: 80%;
+}
+
+.header .nav-links a.active {
+    color: hsl(var(--brand-gold));
+    font-weight: 600;
+}
+
+.header .nav-links a.active::after {
+    width: 80%;
 }
 
 .header .nav-links a:focus {
     /* strong focus ring for keyboard users */
-    box-shadow: 0 0 0 3px hsl(var(--brand-gold) / 0.12), 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 0 0 3px hsl(var(--brand-gold) / 0.3), 0 4px 12px hsl(var(--brand-gold) / 0.2);
 }
 
 /* Logo helpers moved from main.css */
@@ -177,15 +206,26 @@ header .navbar {
 }
 
 /* Subtle gold/black treatment for the brand on hover/focus */
+.logo .brand {
+    transition: all 200ms ease;
+}
+
 .logo .brand:hover,
 .logo .brand:focus {
     color: hsl(var(--brand-gold));
     text-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    transform: scale(1.02);
 }
 
 .logo img {
     /* small soft drop shadow for better contrast on various backgrounds */
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+    transition: filter 200ms ease;
+}
+
+.logo .brand:hover img,
+.logo .brand:focus img {
+    filter: drop-shadow(0 4px 8px hsl(var(--brand-gold) / 0.4));
 }
 
 /* Respect reduced motion preference */

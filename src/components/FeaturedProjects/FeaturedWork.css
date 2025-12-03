@@ -18,14 +18,14 @@
 .featured-work-title {
     font-size: 2rem;
     font-weight: 700;
-    color: hsl(var(--map-forest, 155 24% 26%));
+    color: hsl(var(--map-fern));
     margin-bottom: 0.75rem;
     text-align: left;
 }
 
 .featured-work-subtitle {
     font-size: 1.125rem;
-    color: #64748b;
+    color: hsl(var(--map-muted));
     margin: 0;
     text-align: left;
 }

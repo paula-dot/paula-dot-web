@@ -18,7 +18,7 @@ export function ContactPage() {
                     <p>
                         I'm open to collaborations, freelance opportunities, or discussions about
                         data, GIS, and technology. Fill out the form below or reach out directly at{' '}
-                        <a href="mailto:degrante77@gmail.com" style={{color: '#047857', fontWeight: '600'}}>
+                        <a href="mailto:degrante77@gmail.com" className="contact-email-link">
                             degrante77@gmail.com
                         </a>
                     </p>

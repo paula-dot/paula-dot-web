@@ -22,7 +22,7 @@
 .page-about h2 {
     font-size: 2rem;
     font-weight: 700;
-    color: #047857;
+    color: hsl(var(--map-fern));
     margin-bottom: 1rem;
     line-height: 1.2;
 }
@@ -30,7 +30,7 @@
 .page-about p {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: #475569;
+    color: hsl(var(--map-muted));
     margin-bottom: 1rem;
 }
 

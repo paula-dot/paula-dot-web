@@ -7,7 +7,7 @@
 .projects-heading {
     font-size: 2rem;
     font-weight: 700;
-    color: hsl(var(--map-forest, 155 24% 26%));
+    color: hsl(var(--map-fern));
     margin-bottom: 2.5rem;
     text-align: left;
 }
@@ -23,7 +23,7 @@
 .domain-heading {
     font-size: 1.5rem;
     font-weight: 600;
-    color: hsl(var(--map-water-deep, 197 100% 28%));
+    color: hsl(var(--map-river));
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
     border-bottom: 2px solid rgba(16, 185, 129, 0.2);
