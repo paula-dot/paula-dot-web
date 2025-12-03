@@ -26,7 +26,7 @@ export function ContactPage() {
                         <label htmlFor="message">Message</label>
                         <textarea id="message" name="message" rows="4" required></textarea>
 
-                        <button type="submit" className="btn">Send Message</button>
+                        <button type="submit" className="btn btn-primary">Send Message</button>
                     </form>
                 </section>
                 </div>

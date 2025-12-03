@@ -37,8 +37,9 @@
 }
 
 .contact-form .btn {
-    padding: 0.6rem 1rem;
-    border-radius: 6px;
+    padding: 0.85rem 2rem;
+    border-radius: 999px;
+    margin-top: 0.5rem;
 }
 
 /* single-column on small screens */
