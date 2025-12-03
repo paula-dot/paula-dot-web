@@ -1,18 +1,43 @@
 [
   {
-    "title": "Urban Growth GIS Model — Oyugis",
-    "description": "Satellite-based urban expansion detection using QGIS, GRASS GIS, and ML.",
-    "tags": ["GIS", "Remote Sensing", "ML"]
+    "title": "knbs-open-data-api",
+    "description": "A RESTful API providing structured access to Kenya National Bureau of Statistics datasets for analysis and visualization.",
+    "tags": ["API", "Python", "Data", "REST"],
+    "github": "https://github.com/yourusername/knbs-open-data-api",
+    "year": "2024",
+    "status": "Active"
   },
   {
-    "title": "County GDP Visualizer",
-    "description": "Interactive dashboard analyzing county-level GDP and socio-economic trends.",
-    "tags": ["Data Science", "Visualization", "D3.js"]
+    "title": "kenya-counties-api",
+    "description": "Fast and reliable REST API serving demographic, economic, and spatial data for all counties in Kenya, enabling data-driven applications.",
+    "tags": ["API", "Go", "Data", "REST", "GIS"],
+    "github": "https://github.com/yourusername/kenya-counties-api",
+    "year": "2024",
+    "status": "Active"
   },
   {
-    "title": "Finetic",
-    "description": "Django + Go microservices for a personal AI-driven financial tracker.",
-    "tags": ["Python", "Go", "Django"]
+    "title": "geocoding-standardization-microservice",
+    "description": "A microservice that standardizes addresses and performs geocoding for accurate mapping and spatial analysis in applications.",
+    "tags": ["Microservice", "Go", "GIS", "Geocoding", "Data Standardization"],
+    "github": "https://github.com/yourusername/geocoding-standardization-microservice",
+    "year": "2024",
+    "status": "Active"
+  },
+  {
+    "title": "go-financial-aggregator",
+    "description": "A Go-based personal finance aggregator that consolidates transactions from multiple sources and provides insights using AI-driven analytics.",
+    "tags": ["Go", "Finance", "AI", "Backend", "Microservice"],
+    "github": "https://github.com/yourusername/go-financial-aggregator",
+    "year": "2024",
+    "status": "In Development"
+  },
+  {
+    "title": "echoGraph",
+    "description": "A personal music tracking and analytics platform inspired by Last.fm and AirbudsFM, allowing users to monitor listening habits, discover patterns, and receive smart recommendations.",
+    "tags": ["Go", "React", "Music Analytics", "Full-Stack", "AI", "Personal App"],
+    "github": "https://github.com/yourusername/echoGraph",
+    "year": "2025",
+    "status": "In Development"
   }
 ]
 
