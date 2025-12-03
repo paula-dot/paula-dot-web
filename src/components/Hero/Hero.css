@@ -29,6 +29,31 @@
     /* background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0)); */
 }
 
+/* Glassmorphism card container for hero content */
+.hero-content-card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    .hero-content-card {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+}
+
 @media (max-width: 600px) {
     .hero-section {
         padding: 1.75rem 0; /* slightly tighter vertical spacing on mobile */

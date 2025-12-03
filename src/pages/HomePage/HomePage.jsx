@@ -1,4 +1,6 @@
 import Hero from "../../components/Hero/Hero.jsx";
+import TechStackMarquee from "../../components/TechStack/TechStackMarquee.jsx";
+import FeaturedWork from "../../components/FeaturedProjects/FeaturedWork.jsx";
 import './HomePage.css'
 
 
@@ -15,6 +17,8 @@ export function HomePage() {
         <div className="home-page" style={bgStyle}>
         <title>Paul Akelo</title>
             <Hero />
+            <TechStackMarquee />
+            <FeaturedWork />
         </div>
     );
 }

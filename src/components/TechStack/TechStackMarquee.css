@@ -1,0 +1,208 @@
+/* Tech Stack Marquee Section */
+.tech-stack-marquee-section {
+    width: 100%;
+    padding: 3rem 0;
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);
+    overflow: hidden;
+}
+
+.tech-stack-marquee-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Title */
+.tech-stack-title {
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+/* Marquee Wrapper */
+.marquee-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 1.5rem 0;
+}
+
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(248, 250, 252, 1), rgba(248, 250, 252, 0));
+}
+
+.marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(248, 250, 252, 1), rgba(248, 250, 252, 0));
+}
+
+/* Marquee Content - Infinite Scroll */
+.marquee-content {
+    display: flex;
+    gap: 3rem;
+    animation: scroll 40s linear infinite;
+    width: fit-content;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause animation on hover */
+.marquee-wrapper:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+/* Tech Item */
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 80px;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tech-item:hover {
+    transform: translateY(-8px) scale(1.05);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.12),
+        0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--tech-color, #0ea5e9);
+}
+
+/* Tech Icon */
+.tech-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.6);
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover .tech-icon {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+/* Tech Name */
+.tech-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-align: center;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.tech-item:hover .tech-name {
+    color: var(--tech-color, #0ea5e9);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tech-stack-marquee-section {
+        padding: 2rem 0;
+    }
+
+    .tech-stack-marquee-container {
+        padding: 0 1rem;
+    }
+
+    .tech-stack-title {
+        font-size: 0.8125rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .marquee-content {
+        gap: 2rem;
+        animation-duration: 30s;
+    }
+
+    .tech-item {
+        min-width: 70px;
+        padding: 0.75rem;
+    }
+
+    .tech-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tech-name {
+        font-size: 0.6875rem;
+    }
+
+    .marquee-wrapper::before,
+    .marquee-wrapper::after {
+        width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .marquee-content {
+        gap: 1.5rem;
+        animation-duration: 25s;
+    }
+
+    .tech-item {
+        min-width: 60px;
+        padding: 0.625rem;
+    }
+
+    .tech-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .tech-name {
+        font-size: 0.625rem;
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-content {
+        animation: none;
+    }
+
+    .marquee-wrapper {
+        overflow-x: auto;
+        scrollbar-width: thin;
+    }
+
+    .marquee-content {
+        justify-content: flex-start;
+    }
+}
+
