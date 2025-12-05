@@ -71,7 +71,18 @@ export function ContactPage() {
                 body: JSON.stringify(formData),
             });
 
-            const data = await response.json();
+            // Check if response is JSON
+            const contentType = response.headers.get('content-type');
+            let data;
+
+            if (contentType && contentType.includes('application/json')) {
+                data = await response.json();
+            } else {
+                // If not JSON, likely an error page or missing API
+                const text = await response.text();
+                console.error('Non-JSON response:', text);
+                throw new Error('Server configuration error. Please ensure environment variables are set in Vercel.');
+            }
 
             if (!response.ok) {
                 throw new Error(data.message || 'Failed to send message');
@@ -87,6 +98,7 @@ export function ContactPage() {
             }, 5000);
 
         } catch (error) {
+            console.error('Form submission error:', error);
             setStatus({
                 loading: false,
                 error: error.message || 'Network error. Please try again.',
