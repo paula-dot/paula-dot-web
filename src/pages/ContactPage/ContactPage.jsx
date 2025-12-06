@@ -74,7 +74,7 @@ export function ContactPage() {
             // Check if response is JSON
             const contentType = response.headers.get('content-type');
             let data;
-
+            
             if (contentType && contentType.includes('application/json')) {
                 data = await response.json();
             } else {

@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 module.exports = async (req, res) => {
   // Set Content-Type for all responses
   res.setHeader('Content-Type', 'application/json');
-
+  
   // Enable CORS for your domain (adjust in production)
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -42,8 +42,8 @@ module.exports = async (req, res) => {
   // Check for required environment variables
   if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.TO_EMAIL) {
     console.error('Missing SMTP configuration. Required env vars: SMTP_HOST, SMTP_USER, SMTP_PASS, TO_EMAIL');
-    return res.status(500).json({
-      message: 'Email service not configured. Please contact the site administrator or email directly at degrante77@gmail.com.'
+    return res.status(500).json({ 
+      message: 'Email service not configured. Please contact the site administrator or email directly at degrante77@gmail.com.' 
     });
   }
 
