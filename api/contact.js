@@ -1,6 +1,6 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   // 1. Set standard headers
   res.setHeader('Content-Type', 'application/json');
   // Adjust CORS for production if needed, or rely on Vercel's rewrite rules
