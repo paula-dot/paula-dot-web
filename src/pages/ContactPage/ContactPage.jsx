@@ -1,66 +1,54 @@
-import { useState } from 'react';
-import './ContactPage.css'
+import { useState, useEffect, useRef } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import gsap from 'gsap';
+import './ContactPage.css';
+
+// Schema Validation
+const contactSchema = z.object({
+    name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
+    email: z.string().email({ message: 'Invalid email address' }),
+    message: z.string().min(10, { message: 'Message must be at least 10 characters' }),
+});
 
 export function ContactPage() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
+    const [serverError, setServerError] = useState(null);
+    const [successMsg, setSuccessMsg] = useState(null);
+    const containerRef = useRef(null);
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors, isSubmitting },
+    } = useForm({
+        resolver: zodResolver(contactSchema),
     });
 
-    const [status, setStatus] = useState({
-        loading: false,
-        error: null,
-        success: false
-    });
+    // Animations
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from('.contact-info', {
+                y: 20,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power3.out',
+            });
+            gsap.from('.contact-form', {
+                y: 30,
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.2,
+                ease: 'power3.out',
+            });
+        }, containerRef);
+        return () => ctx.revert();
+    }, []);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-        // Clear errors when user starts typing
-        if (status.error) {
-            setStatus(prev => ({ ...prev, error: null }));
-        }
-    };
-
-    const validateForm = () => {
-        if (!formData.name.trim()) {
-            return 'Please enter your name';
-        }
-        if (!formData.email.trim()) {
-            return 'Please enter your email';
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-            return 'Please enter a valid email address';
-        }
-        if (!formData.message.trim()) {
-            return 'Please enter a message';
-        }
-        if (formData.message.trim().length < 10) {
-            return 'Message should be at least 10 characters';
-        }
-        return null;
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        // Reset status
-        setStatus({ loading: false, error: null, success: false });
-
-        // Validate
-        const validationError = validateForm();
-        if (validationError) {
-            setStatus({ loading: false, error: validationError, success: false });
-            return;
-        }
-
-        // Set loading state
-        setStatus({ loading: true, error: null, success: false });
+    const onSubmit = async (data) => {
+        setServerError(null);
+        setSuccessMsg(null);
 
         try {
             const response = await fetch('/api/contact', {
@@ -68,42 +56,30 @@ export function ContactPage() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(data),
             });
 
-            // Check if response is JSON
             const contentType = response.headers.get('content-type');
-            let data;
-            
-            if (contentType && contentType.includes('application/json')) {
-                data = await response.json();
-            } else {
-                // If not JSON, likely an error page or missing API
-                const text = await response.text();
-                console.error('Non-JSON response:', text);
-                throw new Error('Server configuration error. Please ensure environment variables are set in Vercel.');
+            if (!contentType || !contentType.includes('application/json')) {
+                // Handle non-JSON response (likely 404 or 500 HTML page)
+                throw new Error(
+                    'API not available. If you are running locally, use "vercel dev" instead of "vite".'
+                );
             }
+
+            const result = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || 'Failed to send message');
+                throw new Error(result.message || 'Failed to send message');
             }
 
-            // Success!
-            setStatus({ loading: false, error: null, success: true });
-            setFormData({ name: '', email: '', message: '' });
+            // Success
+            setSuccessMsg('Message sent successfully! I will get back to you soon.');
+            reset(); // Clear form
 
-            // Clear success message after 5 seconds
-            setTimeout(() => {
-                setStatus(prev => ({ ...prev, success: false }));
-            }, 5000);
-
-        } catch (error) {
-            console.error('Form submission error:', error);
-            setStatus({
-                loading: false,
-                error: error.message || 'Network error. Please try again.',
-                success: false
-            });
+        } catch (err) {
+            console.error('Submission Error:', err);
+            setServerError(err.message || 'An unexpected error occurred.');
         }
     };
 
@@ -111,83 +87,86 @@ export function ContactPage() {
         <>
             <title>Contact - Paul Akelo</title>
 
-            <main className="page contact">
+            <main className="page contact" ref={containerRef}>
                 <div className="page-inner">
-                <section className="contact-info">
-                    <h2>Get in Touch</h2>
-                    <p>
-                        I'm open to collaborations, freelance opportunities, or discussions about
-                        data, GIS, and technology. Fill out the form below or reach out directly at{' '}
-                        <a href="mailto:degrante77@gmail.com" className="contact-email-link">
-                            degrante77@gmail.com
-                        </a>
-                    </p>
-                </section>
+                    <section className="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>
+                            I'm open to collaborations, freelance opportunities, or discussions about
+                            data, GIS, and technology. Fill out the form below or reach out directly at{' '}
+                            <a href="mailto:degrante77@gmail.com" className="contact-email-link">
+                                degrante77@gmail.com
+                            </a>
+                        </p>
+                    </section>
 
-                <section className="contact-form">
-                    <form onSubmit={handleSubmit} aria-live="polite">
-                        <div>
-                            <label htmlFor="name">Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                placeholder="Your name"
-                                required
-                                disabled={status.loading}
-                            />
-                        </div>
+                    <section className="contact-form">
+                        <form onSubmit={handleSubmit(onSubmit)} noValidate>
 
-                        <div>
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="your.email@example.com"
-                                required
-                                disabled={status.loading}
-                            />
-                        </div>
-
-                        <div>
-                            <label htmlFor="message">Message</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                placeholder="Tell me about your project or idea..."
-                                required
-                                disabled={status.loading}
-                            ></textarea>
-                        </div>
-
-                        {status.error && (
-                            <div role="alert" className="form-error">
-                                {status.error}
+                            {/* Name Field */}
+                            <div className="form-group">
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    placeholder="Your Name"
+                                    {...register('name')}
+                                    disabled={isSubmitting}
+                                    className={errors.name ? 'input-error' : ''}
+                                />
+                                {errors.name && <span className="error-msg">{errors.name.message}</span>}
                             </div>
-                        )}
 
-                        {status.success && (
-                            <div role="status" className="form-success">
-                                ✓ Message sent successfully! I'll get back to you soon.
+                            {/* Email Field */}
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="your.email@example.com"
+                                    {...register('email')}
+                                    disabled={isSubmitting}
+                                    className={errors.email ? 'input-error' : ''}
+                                />
+                                {errors.email && <span className="error-msg">{errors.email.message}</span>}
                             </div>
-                        )}
 
-                        <button
-                            type="submit"
-                            className="btn btn-primary"
-                            disabled={status.loading}
-                        >
-                            {status.loading ? 'Sending...' : 'Send Message'}
-                        </button>
-                    </form>
-                </section>
+                            {/* Message Field */}
+                            <div className="form-group">
+                                <label htmlFor="message">Message</label>
+                                <textarea
+                                    id="message"
+                                    placeholder="Tell me about your project or idea..."
+                                    rows={5}
+                                    {...register('message')}
+                                    disabled={isSubmitting}
+                                    className={errors.message ? 'input-error' : ''}
+                                ></textarea>
+                                {errors.message && <span className="error-msg">{errors.message.message}</span>}
+                            </div>
+
+                            {/* Server Feedback */}
+                            {serverError && (
+                                <div className="form-feedback error" role="alert">
+                                    ⚠️ {serverError}
+                                </div>
+                            )}
+
+                            {successMsg && (
+                                <div className="form-feedback success" role="status">
+                                    ✅ {successMsg}
+                                </div>
+                            )}
+
+                            <button
+                                type="submit"
+                                className="btn btn-primary"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
+                            </button>
+                        </form>
+                    </section>
                 </div>
             </main>
         </>

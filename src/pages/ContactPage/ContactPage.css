@@ -106,25 +106,44 @@
     opacity: 0.6;
 }
 
-/* Form feedback messages */
-.form-error {
-    padding: 1rem;
+/* Validation Styles */
+.contact input.input-error,
+.contact textarea.input-error {
+    border-color: #ef4444;
     background-color: #fef2f2;
-    border: 1px solid #fecaca;
+}
+
+.contact input.input-error:focus,
+.contact textarea.input-error:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.error-msg {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+    font-weight: 500;
+}
+
+/* Form feedback messages */
+.form-feedback {
+    padding: 1rem;
     border-radius: 0.5rem;
-    color: #991b1b;
     font-size: 0.95rem;
     font-weight: 500;
 }
 
-.form-success {
-    padding: 1rem;
+.form-feedback.error {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+
+.form-feedback.success {
     background-color: #f0fdf4;
     border: 1px solid #86efac;
-    border-radius: 0.5rem;
     color: #166534;
-    font-size: 0.95rem;
-    font-weight: 500;
 }
 
 /* Button states */
@@ -132,6 +151,7 @@
     opacity: 0.6;
     cursor: not-allowed;
 }
+
 /* Button styling */
 .contact-form .btn {
     margin-top: 0.5rem;
