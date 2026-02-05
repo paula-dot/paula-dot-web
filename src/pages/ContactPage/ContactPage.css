@@ -1,3 +1,4 @@
+/*
 .contact-page {
     min-height: 100%;
     color: inherit;
@@ -13,7 +14,6 @@
     margin: 0 auto;
 }
 
-/* Contact info section */
 .contact-info {
     text-align: center;
     margin-bottom: 3rem;
@@ -34,7 +34,6 @@
     margin: 0 auto;
 }
 
-/* Form styling */
 .contact-form {
     background: #fff;
     border-radius: 1.25rem;
@@ -55,7 +54,6 @@
     margin-bottom: 0.5rem;
 }
 
-/* Form controls */
 .contact input,
 .contact textarea {
     width: 100%;
@@ -87,14 +85,12 @@
     font-family: inherit;
 }
 
-/* Button styling */
 .contact-form .btn {
     margin-top: 0.5rem;
     width: 100%;
     font-size: 1.05rem;
 }
 
-/* Responsive adjustments */
 @media (max-width: 700px) {
     .contact {
         padding: 2rem 1rem;
@@ -123,3 +119,4 @@
         margin-bottom: 2rem;
     }
 }
+*/

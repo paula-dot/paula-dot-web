@@ -11,13 +11,14 @@ export function ContactPage() {
         <>
             <title>Contact - Paul Akelo</title>
 
-            <main className="page contact">
+            {/* Main Page Container: Dark background, min-height screen, centered content */}
+            <main className="min-h-screen bg-[#050505] text-white flex items-center justify-center p-6 sm:p-12">
                 <div className="page-inner">
                 <section className="contact-info">
-                    <h2>Get in Touch</h2>
+                    <h2>Let's Connect</h2>
                     <p>
-                        I'm open to collaborations, freelance opportunities, or discussions about
-                        data, GIS, and technology. Fill out the form below or reach out directly at{' '}
+                        Looking for a backend developer for your team? Interested in collaborating on backend systems or open-source projects? I'd love to hear from you.
+                        Fill out the form below or reach out directly at{' '}
                         <a href="mailto:degrante77@gmail.com" style={{color: '#047857', fontWeight: '600'}}>
                             degrante77@gmail.com
                         </a>
@@ -59,6 +60,19 @@ export function ContactPage() {
                         </div>
 
                         <button type="submit" className="btn btn-primary">
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
                             Send Message
                         </button>
                     </form>
