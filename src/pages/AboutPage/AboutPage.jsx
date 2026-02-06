@@ -5,7 +5,7 @@ export function AboutPage() {
         <>
             <title>About</title>
 
-            <main className="page-about">
+            <div className="page-about">
                 <div className="page-inner">
                 <section className="intro">
                     <h2>Background & Passion</h2>
@@ -37,7 +37,7 @@ export function AboutPage() {
 
                 </section>
                 </div>
-            </main>
+            </div>
         </>
     );
 }

@@ -11,18 +11,21 @@ export function ContactPage() {
         <>
             <title>Contact - Paul Akelo</title>
 
-            <main className="contact-page">
+            <div className="contact-page">
                 <div className="page-inner">
-                    <section className="contact-info">
-                        <h2>Let's Connect</h2>
-                        <p>
-                            Looking for a backend developer for your team? Interested in collaborating on backend systems or open-source projects? I'd love to hear from you.
-                            Fill out the form below or reach out directly at{' '}
-                            <a href="mailto:degrante77@gmail.com">degrante77@gmail.com</a>
-                        </p>
-                    </section>
+                    <div className="contact-info-card">
+                        <section className="contact-info">
+                            <h2>Let's Connect</h2>
+                            <p>
+                                Looking for a backend developer for your team? Interested in collaborating on backend systems or open-source projects? I'd love to hear from you.
+                                Fill out the form below or reach out directly at{' '}
+                                <a href="mailto:degrante77@gmail.com">degrante77@gmail.com</a>
+                            </p>
+                        </section>
+                    </div>
 
-                    <section className="contact-form">
+                    <div className="contact-form-card">
+                        <section className="contact-form">
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="name">Name</label>
@@ -43,6 +46,16 @@ export function ContactPage() {
                                     name="email"
                                     placeholder="your.email@example.com"
                                     required
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="subject">Subject</label>
+                                <input
+                                    type="text"
+                                    id="subject"
+                                    name="subject"
+                                    placeholder="Project idea, collaboration, etc."
                                 />
                             </div>
 
@@ -74,8 +87,9 @@ export function ContactPage() {
                             </button>
                         </form>
                     </section>
+                    </div>
                 </div>
-            </main>
+            </div>
         </>
     );
 }
