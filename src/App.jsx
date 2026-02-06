@@ -4,7 +4,7 @@ import Layout from './components/Layout.jsx'
 import { HomePage } from './pages/HomePage/HomePage.jsx'
 import { ProjectsPage} from "./pages/ProjectsPage/ProjectsPage.jsx";
 import { AboutPage } from './pages/AboutPage/AboutPage.jsx'
-import { ContactPage } from "./pages/ContactPage.jsx";
+import { ContactPage } from "./pages/ContactPage/ContactPage.jsx";
 import '../styles/main.css'
 
 export default function App() {
