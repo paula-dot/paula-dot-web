@@ -5,49 +5,41 @@ import "./Projects.css";
 export default function Projects({ limit }) {
     const displayProjects = limit ? projects.slice(0, limit) : projects;
 
-    // Group projects by domain
-    const projectsByDomain = {
-        "Data & APIs": [
-            "knbs-open-data-api",
-            "kenya-counties-api"
-        ],
-        "Geospatial Services": [
-            "geocoding-standardization-microservice"
-        ],
-        "Personal": [
-            "go-financial-aggregator",
-            "echoGraph"
-        ]
-    };
-
-    // Create grouped structure
-    const groupedProjects = {};
-    displayProjects.forEach(project => {
-        for (const [domain, projectTitles] of Object.entries(projectsByDomain)) {
-            if (projectTitles.includes(project.title)) {
-                if (!groupedProjects[domain]) {
-                    groupedProjects[domain] = [];
-                }
-                groupedProjects[domain].push(project);
-                break;
-            }
+    // Group projects by category
+    const groupedProjects = displayProjects.reduce((acc, project) => {
+        const category = project.category || "Other";
+        if (!acc[category]) {
+            acc[category] = [];
         }
+        acc[category].push(project);
+        return acc;
+    }, {});
+
+    // Define category order
+    const categoryOrder = ["Data & APIs", "Geospatial Services", "Personal Projects", "Other"];
+    const sortedCategories = Object.keys(groupedProjects).sort((a, b) => {
+        return categoryOrder.indexOf(a) - categoryOrder.indexOf(b);
     });
 
     return (
         <section className="projects-section">
-            <h2 className="projects-heading">
-                {limit ? "Featured Projects" : "Featured Projects"}
-            </h2>
+            <div className="projects-header">
+                <h1 className="projects-title">Projects</h1>
+                <p className="projects-intro">
+                    Case studies showcasing backend systems, APIs, and data engineering work.
+                    Each project emphasizes scalable architecture and production-ready code.
+                </p>
+            </div>
 
-            {Object.entries(groupedProjects).map(([domain, domainProjects]) => (
-                <div key={domain} className="project-domain">
-                    <h3 className="domain-heading">{domain}</h3>
+            {sortedCategories.map((category) => (
+                <div key={category} className="project-category">
+                    <h2 className="category-heading">{category}</h2>
                     <div className="projects-grid">
-                        {domainProjects.map((project) => (
+                        {groupedProjects[category].map((project) => (
                             <ProjectCard
-                                key={project.title}
+                                key={project.id}
                                 title={project.title}
+                                subtitle={project.subtitle}
                                 description={project.description}
                                 tags={project.tags}
                                 github={project.github}

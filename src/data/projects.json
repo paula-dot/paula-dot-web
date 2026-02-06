@@ -1,38 +1,59 @@
 [
   {
-    "title": "knbs-open-data-api",
-    "description": "A RESTful API providing structured access to Kenya National Bureau of Statistics datasets for analysis and visualization.",
-    "tags": ["API", "Python", "Data", "REST"],
+    "id": "knbs-open-data-api",
+    "title": "KNBS Open Data API",
+    "subtitle": "RESTful Data Access Layer",
+    "description": "A high-performance RESTful API providing structured access to Kenya National Bureau of Statistics datasets. Built for data analysts and developers who need reliable, well-documented access to national statistics.",
+    "tags": ["Python", "FastAPI", "PostgreSQL", "Redis"],
+    "metric": { "value": "50+", "label": "Datasets Available" },
     "github": "https://github.com/paula-dot/knbs-open-data-api",
-    "status": "In Development"
+    "demo": null,
+    "status": "In Development",
+    "category": "Data & APIs"
   },
   {
-    "title": "kenya-counties-api",
-    "description": "Fast and reliable REST API serving demographic, economic, and spatial data for all counties in Kenya, enabling data-driven applications.",
-    "tags": ["API", "Go", "Data", "REST", "GIS"],
+    "id": "kenya-counties-api",
+    "title": "Kenya Counties API",
+    "subtitle": "Geospatial Data Service",
+    "description": "Fast and reliable REST API serving demographic, economic, and spatial data for all 47 counties in Kenya. Enables data-driven applications with sub-100ms response times.",
+    "tags": ["Go", "Gin", "PostGIS", "Docker"],
     "github": "https://github.com/paula-dot/kenya-counties-api",
-    "status": "In Development"
+    "demo": null,
+    "status": "In Development",
+    "category": "Data & APIs"
   },
   {
-    "title": "geocoding-standardization-microservice",
-    "description": "A microservice that standardizes addresses and performs geocoding for accurate mapping and spatial analysis in applications.",
-    "tags": ["Microservice", "Go", "GIS", "Geocoding", "Data Standardization"],
+    "id": "geocoding-microservice",
+    "title": "Geocoding Microservice",
+    "subtitle": "Address Standardization Engine",
+    "description": "A containerized microservice that standardizes addresses and performs geocoding for accurate mapping. Features batch processing and caching for high-throughput scenarios.",
+    "tags": ["Go", "Redis", "Docker", "REST"],
     "github": "https://github.com/paula-dot/geocoding-standardization-microservice",
-    "status": "In Development"
+    "demo": null,
+    "status": "In Development",
+    "category": "Geospatial Services"
   },
   {
-    "title": "go-financial-aggregator",
-    "description": "A Go-based personal finance aggregator that consolidates transactions from multiple sources and provides insights using AI-driven analytics.",
-    "tags": ["Go", "Finance", "AI", "Backend", "Microservice"],
+    "id": "go-financial-aggregator",
+    "title": "Financial Aggregator",
+    "subtitle": "Personal Finance Backend",
+    "description": "A Go-based personal finance aggregator that consolidates transactions from multiple sources. Features AI-driven categorization and spending insights with event-driven architecture.",
+    "tags": ["Go", "PostgreSQL", "Redis", "AI"],
     "github": "https://github.com/paula-dot/go-financial-aggregator",
-    "status": "In Development"
+    "demo": null,
+    "status": "In Development",
+    "category": "Personal Projects"
   },
   {
-    "title": "echoGraph",
-    "description": "A personal music tracking and analytics platform inspired by Last.fm and AirbudsFM, allowing users to monitor listening habits, discover patterns, and receive smart recommendations.",
-    "tags": ["Go", "React", "Music Analytics", "Full-Stack", "AI", "Personal App"],
+    "id": "echograph",
+    "title": "EchoGraph",
+    "subtitle": "Music Analytics Platform",
+    "description": "A personal music tracking and analytics platform inspired by Last.fm. Monitor listening habits, discover patterns, and receive smart recommendations powered by ML.",
+    "tags": ["Go", "React", "PostgreSQL", "ML"],
     "github": "https://github.com/paula-dot/echoGraph",
-    "status": "In Development"
+    "demo": null,
+    "status": "In Development",
+    "category": "Personal Projects"
   }
 ]
 
