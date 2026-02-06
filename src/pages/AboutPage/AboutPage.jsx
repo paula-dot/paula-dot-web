@@ -1,41 +1,102 @@
 import './AboutPage.css'
 
 export function AboutPage() {
+    // Core skills organized by category for the "Stack" section
+    const coreSkills = {
+        languages: ["Python", "Go", "SQL", "JavaScript"],
+        infrastructure: ["Docker", "Kubernetes", "AWS", "Linux"],
+        databases: ["PostgreSQL", "Redis", "PostGIS", "SQLite"]
+    };
+
+    const technicalInterests = [
+        "API Design & Architecture",
+        "Event-Driven Systems",
+        "Cloud-Native Development",
+        "Database Optimization",
+        "Geospatial Computing",
+        "Open Source Tooling"
+    ];
+
     return (
         <>
             <title>About</title>
 
             <div className="page-about">
                 <div className="page-inner">
-                <section className="intro">
-                    <h2>Background & Passion</h2>
-                    <p>
-                        I am Paul Akelo, a Computer Science student and GIS Analyst passionate about translating complex spatial phenomena into actionable insights.
-                        Growing up fascinated by the patterns of cities and landscapes, I realized early on that maps are more than visuals—they are a medium for understanding human behavior, urban growth, and geopolitical dynamics.
-                        Today, I combine this cartographic intuition with coding expertise to develop interactive maps, spatial data pipelines, and analytical tools that inform real-world decisions.
-                    </p>
-                </section>
+                    {/* SECTION 1: BIO + AVATAR CARD */}
+                    <section className="about-hero">
+                        {/* Left: Bio Content */}
+                        <div className="about-bio">
+                            <div className="bio-block">
+                                <h2>About Me</h2>
+                                <p>
+                                    I'm Paula Dot – a software engineer specializing in backend systems and API architecture. I focus on building scalable, reliable software using languages like Go, Python, and PostgreSQL.
+                                </p>
+                            </div>
 
-                <section className="skills">
-                    <h2>Technical Skills & Approach</h2>
-                    <p>
-                        My work sits at the intersection of software engineering and geoinformatics.
-                        Using Python, Django, Go, D3.js, and tools like QGIS and GRASS GIS, I design solutions that are both technically robust and visually intuitive.
-                        From satellite-based urban growth models to interactive county-level GDP dashboards, I take pride in creating systems that transform raw spatial data into meaningful narratives.
-                        Machine Learning allows me to uncover patterns that are often invisible to the naked eye, adding predictive power to traditional GIS analyses.
-                    </p>
-                </section>
+                            <div className="bio-block">
+                                <h2>Background</h2>
+                                <p>
+                                    With a background in GIS and urban analysis, I bring a systems-thinking approach to backend development. I'm passionate about designing clean APIs, optimizing database queries, and building infrastructure that scales. Whether it's event-driven microservices, REST endpoints, or data pipelines, I thrive on solving complex technical problems with clarity and precision.
+                                </p>
+                                <p>
+                                    Outside of code, you'll find me exploring open-source tooling, contributing to developer communities, and staying current with the latest in cloud-native architecture.
+                                </p>
+                            </div>
+                        </div>
 
-                <section className="interests">
-                    <h2>Interests & Vision</h2>
-                    <p>
-                        Beyond coding and maps, I am driven by a fascination with Urban Studies and Geopolitics.
-                        I explore how demographic trends, economic development, and land-use changes intersect to shape societies.
-                        This curiosity fuels my projects, guiding both the questions I ask and the solutions I build.
-                        My goal is to bridge the gap between complex data and decision-making, helping organizations and communities navigate the spatial and digital landscapes of our world.
-                    </p>
+                        {/* Right: SE Avatar Card */}
+                        <div className="avatar-card">
+                            <div className="avatar-card-inner">
+                                <span className="avatar-initials">SE</span>
+                                <span className="avatar-label">Software Engineer</span>
+                            </div>
+                        </div>
+                    </section>
 
-                </section>
+                    {/* SECTION 2: THE STACK (Replacing Timeline) */}
+                    <section className="about-stack">
+                        {/* Core Skills Card */}
+                        <div className="stack-card core-skills-card">
+                            <h3>Core Skills</h3>
+                            <div className="skills-categories">
+                                <div className="skill-category">
+                                    <h4>Languages</h4>
+                                    <div className="skill-tags">
+                                        {coreSkills.languages.map((skill, idx) => (
+                                            <span key={idx} className="skill-tag">{skill}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="skill-category">
+                                    <h4>Infrastructure</h4>
+                                    <div className="skill-tags">
+                                        {coreSkills.infrastructure.map((skill, idx) => (
+                                            <span key={idx} className="skill-tag">{skill}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="skill-category">
+                                    <h4>Databases</h4>
+                                    <div className="skill-tags">
+                                        {coreSkills.databases.map((skill, idx) => (
+                                            <span key={idx} className="skill-tag">{skill}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Technical Interests Card */}
+                        <div className="stack-card interests-card">
+                            <h3>Technical Interests</h3>
+                            <ul className="interests-list">
+                                {technicalInterests.map((interest, idx) => (
+                                    <li key={idx}>{interest}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </section>
                 </div>
             </div>
         </>

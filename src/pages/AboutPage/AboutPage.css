@@ -6,48 +6,239 @@
 }
 
 .page-about .page-inner {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-/* Section styling */
-.page-about section {
-    margin-bottom: 3rem;
+/* ==========================================
+   SECTION 1: ABOUT HERO (Bio + Avatar Card)
+   ========================================== */
+.about-hero {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 4rem;
 }
 
-.page-about section:last-child {
-    margin-bottom: 0;
+/* Left: Bio Content */
+.about-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.page-about h2 {
-    font-size: 2rem;
+.bio-block h2 {
+    font-size: 1.75rem;
     font-weight: 700;
     color: #047857;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     line-height: 1.2;
 }
 
-.page-about p {
+.bio-block p {
     font-size: 1.05rem;
-    line-height: 1.7;
+    line-height: 1.75;
     color: #475569;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
-/* Intro section specific */
-.page-about .intro {
+.bio-block p:last-child {
+    margin-bottom: 0;
+}
+
+/* Right: SE Avatar Card */
+.avatar-card {
+    position: sticky;
+    top: 2rem;
+}
+
+.avatar-card-inner {
+    width: 280px;
+    height: 320px;
+    background: linear-gradient(135deg, #047857 0%, #065f46 50%, #064e3b 100%);
+    border-radius: 16px;
     display: flex;
-    gap: 1.25rem;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    box-shadow:
+        0 20px 40px rgba(4, 120, 87, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.page-about .intro img {
-    width: 160px;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+.avatar-card-inner:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 24px 48px rgba(4, 120, 87, 0.25),
+        0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.avatar-initials {
+    font-size: 5rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.avatar-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.5rem 1.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+/* ==========================================
+   SECTION 2: THE STACK (Skills + Interests)
+   ========================================== */
+.about-stack {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+}
+
+.stack-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05),
+        0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(4, 120, 87, 0.08);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.stack-card:hover {
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.08),
+        0 4px 8px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+.stack-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #047857;
+    display: inline-block;
+}
+
+/* Core Skills Card */
+.skills-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skill-category h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    color: #065f46;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 1px solid rgba(4, 120, 87, 0.15);
+    transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(4, 120, 87, 0.1);
+}
+
+/* Technical Interests Card */
+.interests-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.interests-list li {
+    font-size: 0.95rem;
+    color: #475569;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.interests-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #047857;
+    border-radius: 50%;
+}
+
+.interests-list li:hover {
+    color: #047857;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 900px) {
+    .about-hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .avatar-card {
+        position: static;
+        justify-self: center;
+        order: -1; /* Move avatar above bio on mobile */
+    }
+
+    .avatar-card-inner {
+        width: 200px;
+        height: 240px;
+    }
+
+    .avatar-initials {
+        font-size: 3.5rem;
+    }
+
+    .avatar-label {
+        font-size: 0.8rem;
+    }
+
+    .about-stack {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 600px) {
@@ -55,20 +246,24 @@
         padding: 2rem 1rem;
     }
 
-    .page-about .intro {
-        flex-direction: column;
-        align-items: flex-start;
+    .about-hero {
+        margin-bottom: 2.5rem;
     }
 
-    .page-about .intro img {
-        width: 120px;
+    .bio-block h2 {
+        font-size: 1.5rem;
     }
 
-    .page-about h2 {
-        font-size: 1.75rem;
-    }
-
-    .page-about p {
+    .bio-block p {
         font-size: 1rem;
+    }
+
+    .stack-card {
+        padding: 1.5rem;
+    }
+
+    .skill-tag {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.8rem;
     }
 }
