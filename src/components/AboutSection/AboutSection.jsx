@@ -55,6 +55,8 @@ export default function AboutSection() {
 
     return (
         <section className="page-about" id="about">
+            {/* Non-visible anchor to support links that target #letsAbout */}
+            <a id="letsAbout" style={{ display: 'block', height: 0, width: 0, overflow: 'hidden' }} aria-hidden="true" />
             <div className="page-inner">
                 {/* SECTION 1: HERO - About Me + Avatar */}
                 <div className="about-hero">
@@ -77,10 +79,10 @@ export default function AboutSection() {
                     </div>
 
                     <div className="avatar-card">
-                        <div className="avatar-card-inner">
+                        {/* <div className="avatar-card-inner">
                             <span className="avatar-initials">SE</span>
                             <span className="avatar-label">Software Engineer</span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
@@ -205,4 +207,3 @@ export default function AboutSection() {
         </section>
     );
 }
-

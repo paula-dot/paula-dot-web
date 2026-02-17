@@ -1,24 +1,202 @@
+import React, { useState, useEffect, useRef } from 'react';
 import './Header.css'
 
 export function Header() {
+    const NAV_ITEMS = [
+        { id: 'hero', label: 'Home' },
+        { id: 'about', label: 'About' },
+        { id: 'projects', label: 'Projects' },
+        { id: 'contact', label: 'Contact' }
+    ];
+
+    // small id map for alternative anchors (letsAbout -> about etc.)
+    const ID_FALLBACK = {
+        letsAbout: 'about'
+    };
+
+    const [open, setOpen] = useState(false);
+    const [active, setActive] = useState('hero');
+    const menuButtonRef = useRef(null);
+
+    useEffect(() => {
+        // set CSS variable --header-offset to the header height so sections with scroll-margin-top align correctly
+        const setHeaderOffset = () => {
+            const headerEl = document.querySelector('header');
+            const height = headerEl ? Math.round(headerEl.getBoundingClientRect().height) : 72;
+            document.documentElement.style.setProperty('--header-offset', `${height}px`);
+            if (import.meta.env.DEV) console.log('[Header] set --header-offset to', height);
+        };
+
+        // run after a short delay to allow fonts/layout to stabilize
+        const t = setTimeout(setHeaderOffset, 60);
+        window.addEventListener('resize', setHeaderOffset);
+        return () => {
+            clearTimeout(t);
+            window.removeEventListener('resize', setHeaderOffset);
+        };
+    }, []);
+
+    useEffect(() => {
+        // Close menu on escape
+        const onKey = (e) => {
+            if (e.key === 'Escape' && open) setOpen(false);
+        };
+
+        // Close menu on resize (desktop)
+        const onResize = () => {
+            if (window.innerWidth > 768 && open) setOpen(false);
+        };
+
+        window.addEventListener('keydown', onKey);
+        window.addEventListener('resize', onResize);
+        return () => {
+            window.removeEventListener('keydown', onKey);
+            window.removeEventListener('resize', onResize);
+        };
+    }, [open]);
+
+    useEffect(() => {
+        // Observe sections to update active nav item
+        const observerOptions = {
+            root: null,
+            rootMargin: '-40% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.id) {
+                    setActive(entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        NAV_ITEMS.forEach(item => {
+            const el = document.getElementById(item.id) || document.getElementById(ID_FALLBACK[item.id]);
+            if (el) observer.observe(el);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    const scrollToSection = (id) => {
+        // try direct id, then fallback map if present
+        let targetId = id;
+        let el = document.getElementById(targetId);
+        if (!el && ID_FALLBACK[id]) {
+            targetId = ID_FALLBACK[id];
+            el = document.getElementById(targetId);
+        }
+
+        if (!el) {
+            if (import.meta.env.DEV) console.log('[Header] scrollToSection: target element not found for', id);
+            return;
+        }
+
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (import.meta.env.DEV) console.log('[Header] scrollToSection ->', targetId, 'prefersReduced=', prefersReduced);
+
+        // Wait two frames to allow layout to stabilize, then use scrollIntoView which respects CSS scroll-margin-top
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                try {
+                    el.scrollIntoView({ block: 'start', behavior: prefersReduced ? 'auto' : 'smooth' });
+                } catch (err) {
+                    // fallback to window.scrollTo if scrollIntoView fails
+                    const headerEl = document.querySelector('header');
+                    const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 0;
+                    const top = Math.round(el.getBoundingClientRect().top + window.scrollY - headerHeight);
+                    if (prefersReduced) window.scrollTo(0, top);
+                    else window.scrollTo({ top, behavior: 'smooth' });
+                }
+
+                // update hash without causing a jump
+                try {
+                    history.replaceState(null, '', `#${targetId}`);
+                } catch (e) {
+                    // ignore — not critical
+                }
+
+                setActive(targetId);
+
+                // Close mobile menu and restore focus
+                setOpen(false);
+                if (menuButtonRef.current) menuButtonRef.current.focus();
+            });
+        });
+    };
+
+    // Use native anchor behavior for clicks: allow browser to scroll using CSS scroll-margin-top; keep menu state in sync
+    const onNavClick = (e, id) => {
+        setOpen(false);
+        setActive(id);
+        // don't preventDefault; native navigation will occur
+    };
+
+    // Handle deep links on initial load and hash changes
+    useEffect(() => {
+        const tryScrollHash = () => {
+            const hash = window.location.hash;
+            if (!hash) return;
+            const id = hash.replace('#', '');
+            // allow layout to render before measuring
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    const el = document.getElementById(id) || document.getElementById(ID_FALLBACK[id]);
+                    if (el) scrollToSection(id);
+                });
+            });
+        };
+
+        // scroll once on mount if there's a hash
+        tryScrollHash();
+
+        const onHashChange = () => {
+            const id = window.location.hash.replace('#', '');
+            if (id) scrollToSection(id);
+        };
+
+        window.addEventListener('hashchange', onHashChange);
+        return () => window.removeEventListener('hashchange', onHashChange);
+    }, []);
+
     return (
-        <header>
+        <header role="banner" className={open ? 'open' : ''}>
+            <a className="skip-link" href="#main">Skip to content</a>
+
             <div className="container">
-                <nav className="navbar">
+                <nav className="navbar" role="navigation" aria-label="Primary">
                     <h1 className="logo">
-                        <a href="#hero" className="brand" >
-                            {/**
-                             * Use Vite's BASE_URL so the logo works regardless of deploy base path
-                             * (e.g., Vercel previews or custom base). The file lives under public/assets.
-                             */}
+                        <a href="#hero" className="brand" onClick={(e) => onNavClick(e, 'hero')}>
+                            {/** Use Vite's BASE_URL so the logo works regardless of deploy base path */}
                             <img src={`${import.meta.env.BASE_URL}assets/paula_dot_icon.png`} alt="Paula-dot logo"/>
                         </a>
                     </h1>
-                    <ul className="nav-links">
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
+
+                    <button
+                        ref={menuButtonRef}
+                        className={`nav-toggle ${open ? 'is-open' : ''}`}
+                        aria-controls="primary-navigation"
+                        aria-expanded={open}
+                        aria-label={open ? 'Close menu' : 'Open menu'}
+                        onClick={() => setOpen(prev => !prev)}
+                    >
+                        <span className="hamburger" aria-hidden="true" />
+                    </button>
+
+                    <ul id="primary-navigation" className={`nav-links ${open ? 'open' : ''}`}>
+                        {NAV_ITEMS.map(item => (
+                            <li key={item.id}>
+                                <a
+                                    href={`#${item.id}`}
+                                    onClick={(e) => onNavClick(e, item.id)}
+                                    className={active === item.id ? 'active' : ''}
+                                    aria-current={active === item.id ? 'page' : undefined}
+                                >
+                                    {item.label}
+                                </a>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </div>

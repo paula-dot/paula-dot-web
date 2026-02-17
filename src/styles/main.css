@@ -41,4 +41,16 @@ footer.footer {
 /* Remove excessive vertical spacing between sections */
 section {
   margin-bottom: 0;
+  /* default fallback offset if --header-offset is not set */
+  scroll-margin-top: var(--header-offset, 72px);
+}
+
+/* Enable smooth scrolling for user agents (respected by most browsers) */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  /* default header offset for scroll-margin-top; updated at runtime by Header component */
+  --header-offset: 72px;
 }

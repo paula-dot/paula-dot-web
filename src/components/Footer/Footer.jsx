@@ -2,19 +2,9 @@ import './Footer.css'
 
 export function Footer() {
     return (
-        <footer className="footer" id="contact">
+        <footer className="footer" id="footer">
             <div className="container">
-                <div className="footer-contact">
-                    <h3 className="footer-heading">Let's work together</h3>
-                    <a
-                        href="mailto:degrante77@gmail.com"
-                        className="footer-cta"
-                    >
-                        Get in Touch
-                    </a>
-                </div>
-
-                <div className="footer-bottom">
+                  <div className="footer-bottom">
                     <p>&copy; {new Date().getFullYear()} Paul Akelo. All rights reserved.</p>
 
                     <ul className="social-links" aria-label="Social Links">

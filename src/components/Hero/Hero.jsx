@@ -7,11 +7,11 @@ export default function Hero() {
                 <div className="hero-container">
                 {/* LEFT COLUMN: Text Content */}
                 <div className="hero-content">
-                    {/* Open to Opportunities Badge */}
+                    {/* Open to Opportunities Badge
                     <div className="hero-badge">
                         <span className="badge-dot"></span>
                         Open to opportunities
-                    </div>
+                    </div> */}
 
                     {/* Name */}
                     <p className="hero-name">Paul Akelo</p>
@@ -31,10 +31,10 @@ export default function Hero() {
 
                     {/* CTAs */}
                     <div className="hero-cta">
-                        <a href="#projects" className="btn btn-primary">
+                        <a href="/#projects" className="btn btn-primary" aria-label="View Projects section">
                             View Projects
                         </a>
-                        <a href="#contact" className="btn btn-outline">
+                        <a href="/#contact" className="btn btn-outline" aria-label="Jump to Contact section">
                             Contact
                         </a>
                     </div>
