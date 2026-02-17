@@ -13,18 +13,25 @@
         --bg-primary: #1C1C1C;
         --text-primary: #F4F4F4;
         --surface-secondary: #D4C5B0;
-        --accent-primary: #BFA181;
+        /* Primary accent shifted to a more vibrant amber/burnt-orange for better contrast */
+        --accent-primary: #F59E0B; /* Amber */
 
         /* HSL variants for compatibility */
-        --primary: 36 33% 63%; /* #BFA181 Muted Gold */
-        --primary-light: 36 40% 70%;
-        --primary-dark: 36 30% 50%;
-        --primary-muted: 36 20% 25%;
+        /* HSL values tuned for the new amber accent (approx values for #F59E0B) */
+        --primary: 35 92% 50%; /* Amber */
+        --primary-light: 35 96% 62%;
+        --primary-dark: 35 85% 40%;
+        --primary-muted: 35 40% 16%;
 
-        --accent: 36 33% 63%;
-        --accent-light: 36 40% 75%;
-        --accent-dark: 36 25% 50%;
-        --accent-muted: 36 15% 20%;
+        /* Mirror for accent utilities (keeps naming consistent) */
+        --accent: 35 92% 50%;
+        --accent-light: 35 96% 62%;
+        --accent-dark: 35 85% 40%;
+        --accent-muted: 35 32% 18%;
+
+        /* Secondary accent for sparse highlights (muted sage/teal) */
+        --accent-secondary: #7FBF9A; /* muted sage */
+        --accent-secondary-hsl: 140 25% 60%;
 
         /* Text colors */
         --text-primary-hsl: 0 0% 96%; /* #F4F4F4 */
@@ -41,21 +48,21 @@
         /* Borders */
         --border: 0 0% 20%;
         --border-light: 0 0% 25%;
-        --border-focus: 36 33% 63%;
+        --border-focus: 35 92% 50%;
 
         /* Legacy map tones (remapped) */
-        --map-water: 36 33% 63%;
+        --map-water: 35 92% 50%;
         --map-water-deep: 0 0% 8%;
         --map-forest: 0 0% 15%;
         --map-moss: 0 0% 18%;
-        --map-fern: 36 25% 50%;
+        --map-fern: 140 25% 60%; /* uses accent-secondary-hsl */
         --map-sand: 38 20% 76%;
         --map-stone: 0 0% 35%;
         --map-muted: 0 0% 55%;
         --map-ink: 0 0% 96%;
         --map-paper: 0 0% 11%;
         --brand-black: 0 0% 8%;
-        --brand-gold: 36 33% 63%;
+        --brand-gold: 35 92% 50%;
     }
 
     /* Small helpers / preview swatches */
@@ -327,7 +334,7 @@
         z-index: -1;
         pointer-events: none;
         background:
-            radial-gradient(ellipse at 20% 0%, rgba(191, 161, 129, 0.03) 0%, transparent 50%),
+            radial-gradient(ellipse at 20% 0%, rgba(191, 158, 11, 0.03) 0%, transparent 50%),
             radial-gradient(ellipse at 80% 100%, rgba(212, 197, 176, 0.02) 0%, transparent 50%);
     }
 

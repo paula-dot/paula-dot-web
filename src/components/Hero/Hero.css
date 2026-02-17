@@ -15,7 +15,7 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 16px;
-    border: 1px solid rgba(191, 161, 129, 0.15);
+    border: 1px solid hsla(35, 92%, 50%, 0.15);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     padding: 48px;
     max-width: 100%;
@@ -49,13 +49,13 @@
     gap: 8px;
     width: fit-content;
     padding: 8px 16px;
-    background: rgba(191, 161, 129, 0.15);
+    background: hsla(35, 92%, 50%, 0.15);
     color: var(--accent-primary);
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 50px;
     letter-spacing: 0.02em;
-    border: 1px solid rgba(191, 161, 129, 0.2);
+    border: 1px solid hsla(35, 92%, 50%, 0.2);
 }
 
 .badge-dot {
@@ -134,26 +134,19 @@
     background: var(--accent-primary);
     color: var(--bg-primary);
     border: none;
-    box-shadow: 0 4px 12px rgba(191, 161, 129, 0.25);
+    box-shadow: 0 4px 12px hsla(35, 92%, 50%, 0.25);
 }
 
 .btn-primary:hover {
     background: hsl(var(--primary-light));
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(191, 161, 129, 0.35);
+    box-shadow: 0 6px 16px hsla(35, 92%, 50%, 0.35);
 }
 
 .btn-outline {
     background: transparent;
     color: var(--text-primary);
-    border: 2px solid rgba(191, 161, 129, 0.3);
-}
-
-.btn-outline:hover {
-    background: var(--accent-primary);
-    color: var(--bg-primary);
-    border-color: var(--accent-primary);
-    transform: translateY(-2px);
+    border: 2px solid hsla(35, 92%, 50%, 0.3);
 }
 
 /* ==========================================
@@ -217,10 +210,10 @@
 }
 
 .node-line {
-    stroke: rgba(191, 161, 129, 0.2);
+    stroke: hsla(35, 92%, 50%, 0.2);
     stroke-width: 2;
     stroke-linecap: round;
-    filter: drop-shadow(0 0 4px rgba(191, 161, 129, 0.2));
+    filter: drop-shadow(0 0 4px hsla(35, 92%, 50%, 0.2));
 }
 
 
@@ -240,9 +233,9 @@
     transform: translateX(-50%);
     color: var(--accent-primary);
     box-shadow:
-        0 0 16px rgba(191, 161, 129, 0.3),
-        0 0 32px rgba(191, 161, 129, 0.15);
-    border: 1px solid rgba(191, 161, 129, 0.3);
+        0 0 16px hsla(35, 92%, 50%, 0.3),
+        0 0 32px hsla(35, 92%, 50%, 0.15);
+    border: 1px solid hsla(35, 92%, 50%, 0.3);
 }
 
 .node-database {
@@ -270,9 +263,9 @@
     left: 25%;
     color: var(--accent-primary);
     box-shadow:
-        0 0 16px rgba(191, 161, 129, 0.3),
-        0 0 32px rgba(191, 161, 129, 0.15);
-    border: 1px solid rgba(191, 161, 129, 0.3);
+        0 0 16px hsla(35, 92%, 50%, 0.3),
+        0 0 32px hsla(35, 92%, 50%, 0.15);
+    border: 1px solid hsla(35, 92%, 50%, 0.3);
 }
 
 .node-cloud {
@@ -291,16 +284,16 @@
     transform: translateX(-50%);
     color: var(--accent-primary);
     box-shadow:
-        0 0 16px rgba(191, 161, 129, 0.3),
-        0 0 32px rgba(191, 161, 129, 0.15);
-    border: 1px solid rgba(191, 161, 129, 0.3);
+        0 0 16px hsla(35, 92%, 50%, 0.3),
+        0 0 32px hsla(35, 92%, 50%, 0.15);
+    border: 1px solid hsla(35, 92%, 50%, 0.3);
 }
 
 /* Hover state for nodes */
 .node:hover {
     box-shadow:
-        0 0 24px rgba(191, 161, 129, 0.4),
-        0 0 48px rgba(191, 161, 129, 0.2);
+        0 0 24px hsla(35, 92%, 50%, 0.4),
+        0 0 48px hsla(35, 92%, 50%, 0.2);
 }
 
 /* ==========================================

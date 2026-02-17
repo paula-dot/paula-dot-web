@@ -4,7 +4,7 @@
     text-align: center;
     padding: 32px 0 16px;
     margin-top: 0;
-    border-top: 1px solid rgba(191, 161, 129, 0.15);
+    border-top: 1px solid hsla(35, 92%, 50%, 0.15);
     position: relative;
 }
 
@@ -40,7 +40,7 @@
 .footer-cta:hover {
     background-color: hsl(var(--primary-light));
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(191, 161, 129, 0.3);
+    box-shadow: 0 4px 16px hsla(35, 92%, 50%, 0.3);
 }
 
 /* Footer bottom with copyright and socials */
@@ -50,7 +50,7 @@
     align-items: center;
     width: 100%;
     padding-top: 20px;
-    border-top: 1px solid rgba(191, 161, 129, 0.1);
+    border-top: 1px solid hsla(35, 92%, 50%, 0.1);
 }
 
 /* Social links */
@@ -76,14 +76,14 @@
     border-radius: 8px;
     color: var(--text-primary);
     text-decoration: none;
-    background: rgba(191, 161, 129, 0.1);
+    background: hsla(35, 92%, 50%, 0.1);
     transition: all 200ms ease;
-    border: 1px solid rgba(191, 161, 129, 0.2);
+    border: 1px solid hsla(35, 92%, 50%, 0.2);
 }
 
 .social-links a:hover,
 .social-links a:focus {
-    background: rgba(191, 161, 129, 0.2);
+    background: hsla(35, 92%, 50%, 0.2);
     border-color: var(--accent-primary);
     transform: translateY(-2px);
     outline: none;

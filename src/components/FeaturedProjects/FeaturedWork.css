@@ -64,7 +64,7 @@
     background: var(--accent-primary);
     color: var(--bg-primary);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(191, 161, 129, 0.25);
+    box-shadow: 0 8px 24px hsla(35, 92%, 50%, 0.25);
 }
 
 .view-all-link svg {
@@ -106,4 +106,3 @@
         font-size: 1rem;
     }
 }
-

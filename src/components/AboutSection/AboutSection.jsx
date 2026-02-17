@@ -192,13 +192,13 @@ export default function AboutSection() {
                 </div>
 
                 {/* SECTION 5: Secondary Interests */}
-                <div className="about-secondary">
+                <div className="about-secondary" aria-labelledby="secondaryHeading">
                     <div className="secondary-card">
-                        <h3>Secondary Interests</h3>
+                        <h3 id="secondaryHeading">Secondary Interests</h3>
                         <p className="secondary-note">Personal and exploratory projects</p>
-                        <div className="secondary-items">
+                        <div className="secondary-items" role="list" aria-label="Secondary interests list">
                             {secondaryInterests.map((interest, idx) => (
-                                <span key={idx} className="secondary-tag">{interest}</span>
+                                <span key={idx} className="secondary-tag" role="listitem">{interest}</span>
                             ))}
                         </div>
                     </div>

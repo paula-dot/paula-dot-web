@@ -33,13 +33,13 @@
 }
 
 .btn-primary:focus {
-    box-shadow: 0 0 0 4px rgba(191, 161, 129, 0.25), 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0 4px hsla(35, 92%, 50%, 0.25), 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Secondary button - Outlined */
 .btn-secondary {
     background-color: transparent;
-    border: 2px solid rgba(191, 161, 129, 0.3);
+    border: 2px solid hsla(35, 92%, 50%, 0.3);
     color: var(--text-primary);
 }
 
@@ -50,7 +50,7 @@
 }
 
 .btn-secondary:focus {
-    box-shadow: 0 0 0 4px rgba(191, 161, 129, 0.2), 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0 4px hsla(35, 92%, 50%, 0.2), 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Accent button - Warm Beige (#D4C5B0) */

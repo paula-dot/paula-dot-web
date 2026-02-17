@@ -46,13 +46,13 @@
 .focus-pill {
     display: inline-block;
     padding: 8px 16px;
-    background: rgba(191, 161, 129, 0.15);
+    background: hsla(35, 92%, 50%, 0.15);
     color: var(--accent-primary);
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 50px;
     letter-spacing: 0.02em;
-    border: 1px solid rgba(191, 161, 129, 0.2);
+    border: 1px solid hsla(35, 92%, 50%, 0.2);
 }
 
 .bio-statement {
@@ -77,7 +77,7 @@
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(191, 161, 129, 0.12);
+    border: 1px solid hsla(35, 92%, 50%, 0.12);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -156,7 +156,7 @@
     flex-direction: column;
     gap: 4px;
     padding: 8px 12px;
-    background: rgba(191, 161, 129, 0.08);
+    background: hsla(35, 92%, 50%, 0.08);
     border-radius: 8px;
     border-left: 3px solid var(--accent-primary);
 }
@@ -191,7 +191,7 @@
     gap: 16px;
     align-items: flex-start;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(191, 161, 129, 0.12);
+    border: 1px solid hsla(35, 92%, 50%, 0.12);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -207,7 +207,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(191, 161, 129, 0.15);
+    background: hsla(35, 92%, 50%, 0.15);
     border-radius: 12px;
     color: var(--accent-primary);
 }
@@ -254,12 +254,12 @@
 .philosophy-list li {
     display: inline-block;
     padding: 6px 12px;
-    background: rgba(191, 161, 129, 0.1);
+    background: hsla(35, 92%, 50%, 0.1);
     color: var(--accent-primary);
     font-size: 0.85rem;
     font-weight: 500;
     border-radius: 6px;
-    border: 1px solid rgba(191, 161, 129, 0.2);
+    border: 1px solid hsla(35, 92%, 50%, 0.2);
 }
 
 /* ==========================================
@@ -273,7 +273,7 @@
     background: linear-gradient(135deg, hsl(var(--primary-dark)) 0%, var(--accent-primary) 100%);
     border-radius: 12px;
     padding: 32px;
-    box-shadow: 0 16px 32px rgba(191, 161, 129, 0.2);
+    box-shadow: 0 16px 32px hsla(35, 92%, 50%, 0.2);
 }
 
 .goals-card h3 {
@@ -323,7 +323,7 @@
     padding: 24px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(191, 161, 129, 0.12);
+    border: 1px solid hsla(35, 92%, 50%, 0.12);
 }
 
 .secondary-card h3 {
@@ -350,18 +350,43 @@
 .secondary-tag {
     display: inline-block;
     padding: 8px 16px;
-    background: rgba(191, 161, 129, 0.1);
+    background: hsla(35, 92%, 50%, 0.1);
     color: var(--accent-primary);
     font-size: 0.9rem;
     font-weight: 500;
     border-radius: 8px;
-    border: 1px solid rgba(191, 161, 129, 0.2);
+    border: 1px solid hsla(35, 92%, 50%, 0.2);
     transition: all 0.2s ease;
 }
 
 .secondary-tag:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(191, 161, 129, 0.15);
+    box-shadow: 0 4px 8px hsla(35, 92%, 50%, 0.15);
+}
+
+/* === Secondary interests visual tweaks (added) === */
+.secondary-items[role="list"] {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.secondary-tag[role="listitem"] {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: hsla(35, 92%, 50%, 0.06);
+    color: var(--accent-primary);
+    border: 1px solid hsla(35, 92%, 50%, 0.12);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.secondary-tag[role="listitem"]:focus {
+    outline: 3px solid hsla(35, 92%, 50%, 0.16);
+    outline-offset: 2px;
 }
 
 

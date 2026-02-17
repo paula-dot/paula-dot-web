@@ -166,12 +166,8 @@ export function Header() {
 
             <div className="container">
                 <nav className="navbar" role="navigation" aria-label="Primary">
-                    <h1 className="logo">
-                        <a href="#hero" className="brand" onClick={(e) => onNavClick(e, 'hero')}>
-                            {/** Use Vite's BASE_URL so the logo works regardless of deploy base path */}
-                            <img src={`${import.meta.env.BASE_URL}assets/paula_dot_icon.png`} alt="Paula-dot logo"/>
-                        </a>
-                    </h1>
+                    {/* Visually hidden brand for accessibility; logo removed per request */}
+                    <a href="#hero" className="brand sr-only" onClick={(e) => onNavClick(e, 'hero')}>Paul Akelo</a>
 
                     <button
                         ref={menuButtonRef}
