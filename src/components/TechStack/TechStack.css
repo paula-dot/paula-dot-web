@@ -42,17 +42,17 @@
   border-radius: 9999px;
   font-size: 0.9rem;
   line-height: 1;
-  background: #1A1A1A;
-  color: #fff;
-  border: 1px solid rgba(255,176,0,0.06);
+  background: rgba(var(--palette-teal-rgb), 0.08); /* subtle teal wash */
+  color: var(--text-primary);
+  border: 1px solid rgba(var(--palette-teal-rgb), 0.16);
   text-decoration: none;
-  transition: border-color .16s ease, box-shadow .16s ease, transform .14s ease;
+  transition: border-color .16s ease, box-shadow .16s ease, transform .14s ease, background .16s ease;
 }
 
 .tech-pill:hover,
 .tech-pill:focus-visible {
-  border-color: #FFB000;
-  box-shadow: 0 6px 18px rgba(26,26,26,0.18), 0 0 0 6px rgba(255,176,0,0.06);
+  border-color: rgba(var(--palette-cyan-rgb), 0.32);
+  box-shadow: 0 8px 26px rgba(var(--palette-cyan-rgb),0.06), 0 0 0 6px rgba(var(--palette-cyan-rgb), 0.04);
   transform: translateY(-1px);
   outline: none;
 }

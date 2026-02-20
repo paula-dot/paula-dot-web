@@ -12,7 +12,13 @@
         /* Core Palette */
         --bg-primary: #1C1C1C;
         --text-primary: #F4F4F4;
-        --surface-secondary: #D4C5B0;
+        /* New 3-color palette (accessible cool accents) */
+        --palette-cyan: #5FFBF1;
+        --palette-cyan-rgb: 95,251,241;
+        --palette-teal: #3CC2B6;
+        --palette-teal-rgb: 60,194,182;
+        --palette-periwinkle: #86A8E7;
+        --palette-periwinkle-rgb: 134,168,231;
         /* Primary accent shifted to a more vibrant amber/burnt-orange for better contrast */
         --accent-primary: #C47E1C; /* Amber (semantic primary CTA) */
 
@@ -20,16 +26,18 @@
            - amber: primary CTA
            - green, cyan, blue, magenta: categorical accents
         */
-        --sem-amber: #C47E1C; /* Primary CTA */
+        --sem-amber: #C47E1C; /* Primary CTA (legacy) */
         --sem-amber-rgb: 196,126,28;
-        --sem-green:  #1CC47E; /* About */
-        --sem-green-rgb: 28,196,126;
-        --sem-cyan:   #1CB6C4; /* Hero */
-        --sem-cyan-rgb: 28,182,196;
-        --sem-blue:   #1C62C4; /* Projects */
-        --sem-blue-rgb: 28,98,196;
-        --sem-magenta:#C41C62; /* Contact */
-        --sem-magenta-rgb: 196,28,98;
+        --sem-cyan: var(--palette-cyan);
+        --sem-cyan-rgb: var(--palette-cyan-rgb);
+        --sem-green: var(--palette-teal);
+        --sem-green-rgb: var(--palette-teal-rgb);
+        /* Accessible accents (from contrast-adjustments) */
+        --sem-blue: #4A85D9; /* adjusted to meet AA on dark bg */
+        --sem-blue-rgb: 74,133,217;
+        /* magenta adjusted to AA */
+        --sem-magenta: #EC3C85;
+        --sem-magenta-rgb: 236,60,133;
 
         /* HSL variants for compatibility (legacy references) */
         /* Keep existing primary HSL as-is to avoid surprising global shifts; adjust only if desired later */

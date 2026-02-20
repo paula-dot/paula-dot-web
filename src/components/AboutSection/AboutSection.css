@@ -56,17 +56,18 @@
 }
 
 .stack-card {
-    background: rgba(28, 28, 28, 0.6);
+    background: rgba(12, 20, 36, 0.72); /* dark elevated container */
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 1px solid hsla(35, 92%, 50%, 0.12);
+    border: 1px solid rgba(var(--palette-periwinkle-rgb, 134, 168, 231), 0.06); /* periwinkle border */
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .stack-card:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
+    border-color: rgba(var(--palette-cyan-rgb), 0.22); /* cyan border on hover */
 }
 
 .stack-card h3 {
@@ -325,75 +326,76 @@
     padding: 1rem;
     transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, border-color 220ms ease;
     will-change: transform;
-    background: rgba(255,255,255,0.02);
+    background: rgba(12, 20, 36, 0.72); /* dark elevated container */
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.03);
+    border: 1px solid rgba(var(--palette-periwinkle-rgb, 134, 168, 231), 0.06); /* periwinkle border */
+    --service-accent: var(--palette-cyan);
 }
 
 .service-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(3,3,3,0.35);
-}
-
-.service-card:active {
-    transform: translateY(-2px) scale(0.998);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 48px rgba(2, 6, 18, 0.6), 0 0 28px rgba(var(--palette-cyan-rgb), 0.06);
+    border-color: rgba(var(--palette-cyan-rgb), 0.22); /* cyan border on hover */
 }
 
 .service-icon-wrap {
-    background: rgba(28,28,28,0.6);
+    background: rgba(12, 20, 36, 0.6);
     padding: 1rem;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(255, 255, 255, 0.03);
     margin-bottom: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: background 220ms ease, transform 220ms ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    transition: background 220ms ease, transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .service-card:hover .service-icon-wrap {
     transform: translateY(-4px);
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    background: linear-gradient(180deg, rgba(var(--palette-teal-rgb), 0.06), rgba(255, 255, 255, 0.01));
+    border-color: rgba(var(--palette-cyan-rgb), 0.12);
 }
 
-.service-svg {
-    width: 44px;
-    height: 44px;
-    stroke: currentColor; /* inherit color from the parent for flexible accents */
+.service-card .service-title {
+    color: var(--text-primary);
 }
 
-/* New per-service accent colors: use semantic tokens instead of hard-coded hex */
+.service-card .service-desc {
+    color: hsl(var(--text-muted));
+}
+
+/* set per-service accent variables (used for icon color and hover glow) */
 .service-card--backend-engineering {
-    color: var(--sem-blue); /* Blue for Backend Engineering */
+    --service-accent: var(--sem-blue); /* periwinkle accent for backend */
 }
 
 .service-card--api-development {
-    color: var(--sem-magenta); /* Magenta for API Development */
+    --service-accent: var(--sem-magenta); /* magenta accent for API */
 }
 
 .service-card--data-engineering {
-    color: var(--sem-green); /* Green for Data Engineering */
+    --service-accent: var(--sem-green); /* teal for data */
 }
 
-/* hover glow effect per card using the card's color */
-.service-card {
-    position: relative; /* create stacking context for pseudo-element */
-    transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, border-color 220ms ease;
-}
-
-/* subtle colored glow on hover */
+/* Use the per-service accent for the hover glow instead of currentColor */
 .service-card:hover::after {
     content: '';
     pointer-events: none;
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    box-shadow: 0 6px 30px currentColor; /* glow using the card's color */
-    opacity: 0.18;
+    box-shadow: 0 10px 40px var(--service-accent);
+    opacity: 0.12;
     transition: opacity 220ms ease, box-shadow 220ms ease;
 }
 
-/* strengthen border color slightly on hover to match accent */
-.service-card:hover {
-    border-color: rgba(255,255,255,0.06);
+/* Icon wrap inherits accent for svg stroke/fill */
+.service-card .service-icon-wrap {
+    color: var(--service-accent);
+}
+
+.service-svg {
+    width: 44px;
+    height: 44px;
+    stroke: currentColor; /* inherit color from the parent for flexible accents */
 }
 
 /* Responsive padding and spacing refinements */

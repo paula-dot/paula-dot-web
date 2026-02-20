@@ -20,9 +20,9 @@
 .skills-card {
     padding: 1.75rem;
     border-radius: 1.25rem;
-    background: rgba(10, 17, 40, 0.75);
-    border: 1px solid rgba(0, 229, 255, 0.12);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    background: rgba(12, 20, 36, 0.78);
+    border: 1px solid rgba(var(--palette-periwinkle-rgb,134,168,231), 0.06);
+    box-shadow: 0 18px 40px rgba(2,6,18,0.6);
     height: fit-content;
 }
 
@@ -44,25 +44,19 @@
 .skills-list-item {
     padding: 0.45rem 0.85rem;
     border-radius: 0.75rem;
-    /* subtle cyan wash for skill chips */
-    background: rgba(0, 229, 255, 0.1);
+    /* subtle teal wash for skill chips */
+    background: rgba(var(--palette-teal-rgb), 0.12);
     color: hsl(var(--text-primary));
     font-size: 0.9rem;
     display: flex;
     justify-content: flex-start;
     align-items: inherit;
-}
-
-
-.skill-badge {
-    display: block;
-    height: auto;
-    max-width: 100%;
+    border: 1px solid rgba(var(--palette-teal-rgb),0.16);
 }
 
 /* compact modifier keeps items tighter */
 .skills-section--compact .skills-list-item {
-    background: rgba(0, 229, 255, 0.08);
+    background: rgba(var(--palette-teal-rgb), 0.10);
     color: hsl(var(--text-primary));
     font-size: 0.85rem;
     padding: 0.35rem 0.6rem;

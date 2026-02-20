@@ -11,14 +11,14 @@
 
 /* Hero Card - borderless / full-width look */
 .hero-card {
-    background: rgba(28, 28, 28, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 0; /* remove rounded corners to break out of the box */
-    border: none; /* remove visible border */
-    box-shadow: none; /* remove card shadow */
-    padding: 64px; /* a bit more interior space */
-    max-width: 100%;
+    background: rgba(12, 20, 36, 0.7); /* darker card to match elevated dark container aesthetic */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px; /* rounded containers */
+    border: 1px solid rgba(134,168,231,0.06); /* faint periwinkle border */
+    box-shadow: 0 12px 30px rgba(2,6,23,0.6);
+    padding: 48px; /* a bit more interior space */
+    max-width: 1100px;
     width: calc(100% - 32px);
     margin: 0 auto;
 }
@@ -36,9 +36,9 @@
 /* Expose semantic color CSS variables locally to simplify reference in this component */
 .hero-card {
     --c-amber: var(--sem-amber, #C47E1C);
-    --c-green: var(--sem-green, #1CC47E);
-    --c-cyan: var(--sem-cyan, #1CB6C4);
-    --c-blue: var(--sem-blue, #1C62C4);
+    --c-green: var(--sem-green, var(--palette-teal));
+    --c-cyan: var(--sem-cyan, var(--palette-cyan));
+    --c-blue: var(--sem-blue, var(--palette-periwinkle));
     --c-magenta: var(--sem-magenta, #C41C62);
 }
 
@@ -87,9 +87,9 @@
     color: var(--text-primary);
 }
 
-/* Use cyan -> blue gradient for the 'Backend & Data Engineering' semantic accent */
+/* Use cyan -> teal -> periwinkle gradient for the 'Backend & Data Engineering' semantic accent */
 .title-accent {
-    background: linear-gradient(90deg, var(--c-cyan) 0%, var(--c-blue) 100%);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -124,19 +124,16 @@
 }
 
 .btn-primary {
-    background: var(--accent-primary, var(--c-amber));
+    background: var(--palette-cyan);
     color: var(--bg-primary);
     border: none;
-    box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb, 196,126,28), 0.25);
+    box-shadow: 0 6px 20px rgba(var(--palette-cyan-rgb), 0.18);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    /* slightly brighten amber on hover while keeping accessibility */
-    background: color-mix(in srgb, var(--accent-primary) 82%, white 18%);
+    box-shadow: 0 10px 34px rgba(var(--palette-cyan-rgb), 0.28);
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(var(--accent-primary-rgb, 196,126,28), 0.35);
-    filter: brightness(1.04);
 }
 
 .btn-primary:active {
@@ -195,10 +192,10 @@
     left: 50%;
     top: 40%;
     transform: translate(-50%, -50%);
-    width: 220px;
-    height: 140px;
-    background: radial-gradient(circle at center, rgba(196,126,28,0.14) 0%, rgba(196,126,28,0.06) 30%, transparent 60%);
-    filter: blur(26px);
+    width: 240px;
+    height: 160px;
+    background: radial-gradient(circle at center, rgba(var(--palette-cyan-rgb),0.12) 0%, rgba(var(--palette-teal-rgb),0.08) 40%, transparent 70%);
+    filter: blur(28px);
     z-index: -1;
     pointer-events: none;
 }
@@ -277,11 +274,11 @@
 }
 
 /* Ensure the hero SVG gradient uses the global CTA color for the stop */
-#hero svg defs linearGradient#g1 stop[offset="100%"] {
+#hero svg stop[offset="100%"] {
     stop-color: var(--accent-primary);
 }
 
-#hero svg defs linearGradient#g1 stop[offset="0%"] {
+#hero svg stop[offset="0%"] {
     stop-color: color-mix(in srgb, var(--accent-primary) 70%, white 30%);
 }
 

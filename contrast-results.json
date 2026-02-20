@@ -1,0 +1,55 @@
+{
+  "pageBg": "#1C1C1C",
+  "cardComp": "#101622",
+  "chip15": "#173038",
+  "chip12": "#152b34",
+  "pairs": {
+    "paletteCyan": {
+      "hex": "#5FFBF1",
+      "contrast_vs_page": 13.44,
+      "contrast_vs_card": 14.27
+    },
+    "paletteTeal": {
+      "hex": "#3CC2B6",
+      "contrast_vs_page": 7.78,
+      "contrast_vs_card": 8.26
+    },
+    "palettePeriwinkle": {
+      "hex": "#86A8E7",
+      "contrast_vs_page": 7.12,
+      "contrast_vs_card": 7.56
+    },
+    "semBlue": {
+      "hex": "#4A85D9",
+      "contrast_vs_page": 4.58,
+      "contrast_vs_card": 4.87
+    },
+    "semMagenta": {
+      "hex": "#EC3C85",
+      "contrast_vs_page": 4.51,
+      "contrast_vs_card": 4.79
+    },
+    "semAmber": {
+      "hex": "#C47E1C",
+      "contrast_vs_page": 5.15,
+      "contrast_vs_card": 5.47
+    }
+  },
+  "chips": {
+    "chip15": {
+      "hex": "#173038",
+      "contrast_textWhite": 12.59,
+      "meetsAA": true
+    },
+    "chip12": {
+      "hex": "#152b34",
+      "contrast_textWhite": 13.38,
+      "meetsAA": true
+    }
+  },
+  "cta": {
+    "paletteCyan": "#5FFBF1",
+    "contrast_textDark": 13.44,
+    "meetsAA": true
+  }
+}

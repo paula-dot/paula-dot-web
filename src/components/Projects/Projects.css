@@ -53,10 +53,10 @@
 .category-heading {
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--sec-color);
+    color: var(--text-primary);
     margin: 0 0 20px 0;
     padding-bottom: 10px;
-    border-bottom: 2px solid rgba(var(--sec-color-rgb), 0.15);
+    border-bottom: 2px solid rgba(var(--sec-color-rgb), 0.15); /* use sec-color for decorative border only */
 }
 
 /* ==========================================
@@ -73,38 +73,40 @@
    PROJECT CARD - Case Study Design
    ========================================== */
 .project-card {
-    background: rgba(28, 28, 28, 0.8);
+    background: rgba(12, 20, 36, 0.78);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 1px solid hsla(35, 92%, 50%, 0.12);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 28px rgba(2,6,18,0.6);
+    border: 1px solid rgba(var(--palette-periwinkle-rgb,134,168,231),0.06); /* faint periwinkle */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 220ms ease;
     display: flex;
     flex-direction: column;
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 26px 60px rgba(2,6,18,0.7), 0 0 36px rgba(var(--palette-cyan-rgb),0.06);
+    border-color: rgba(var(--palette-cyan-rgb),0.22);
 }
 
-.project-card:hover .project-thumbnail img {
-    opacity: 1;
-    transform: scale(1.05);
+/* Decorative gradient border using a pseudo-element */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px; /* sits just outside the card */
+    border-radius: 13px;
+    padding: 1px;
+    background: linear-gradient(90deg, rgba(var(--palette-cyan-rgb),0.9), rgba(var(--palette-teal-rgb),0.9) 50%, rgba(var(--palette-periwinkle-rgb),0.9));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.0; /* hidden by default; revealed on hover */
+    transition: opacity 260ms ease;
 }
 
-.thumbnail-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255, 255, 255, 0.2);
-}
-
-.thumbnail-placeholder svg {
-    width: 48px;
-    height: 48px;
+.project-card:hover::before {
+    opacity: 1.0;
 }
 
 /* Status Badge */
@@ -170,32 +172,32 @@
 
 .project-tag {
     display: inline-block;
-    padding: 4px 10px;
-    background: hsla(35, 92%, 50%, 0.1);
-    color: var(--accent-primary);
+    padding: 6px 10px;
+    background-color: rgba(var(--palette-teal-rgb), 0.15); /* low opacity teal */
+    color: var(--text-primary); /* ensure high contrast on chip backgrounds */
     font-size: 0.75rem;
     font-weight: 600;
-    border-radius: 4px;
-    border: 1px solid hsla(35, 92%, 50%, 0.15);
+    border-radius: 6px;
+    border: 1px solid rgba(var(--palette-teal-rgb), 0.22);
 }
 
 /* Color-coded tag variants */
 .project-tag--docker {
-    background-color: rgba(var(--sec-color-rgb, 28,98,196), 0.08); /* faint blue */
-    color: var(--sem-blue);
-    border-color: rgba(var(--sec-color-rgb, 28,98,196), 0.12);
+    background-color: rgba(var(--palette-teal-rgb,60,194,182), 0.12);
+    color: var(--palette-teal);
+    border-color: rgba(var(--palette-teal-rgb,60,194,182), 0.16);
 }
 
 .project-tag--postgis {
-    background-color: rgba(28, 196, 126, 0.08); /* faint green */
-    color: var(--sem-green); /* vibrant green text */
-    border-color: rgba(28, 196, 126, 0.12);
+    background-color: rgba(var(--palette-teal-rgb,60,194,182), 0.08);
+    color: var(--sem-green);
+    border-color: rgba(var(--palette-teal-rgb,60,194,182), 0.12);
 }
 
 .project-tag--go {
-    background-color: rgba(0, 173, 216, 0.08); /* faint Go blue/cyan */
-    color: #00ADD8; /* Go's typical color */
-    border-color: rgba(0, 173, 216, 0.12);
+    background-color: rgba(var(--palette-cyan-rgb,95,251,241), 0.08);
+    color: var(--palette-cyan);
+    border-color: rgba(var(--palette-cyan-rgb,95,251,241), 0.12);
 }
 
 /* Ensure tag text remains legible on hover */

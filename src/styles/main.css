@@ -54,28 +54,42 @@ html {
   /* default header offset for scroll-margin-top; updated at runtime by Header component */
   --header-offset: 72px;
 
-  /* Semantic color tokens (section mapping strategy) */
-  --sem-amber: #C47E1C; /* CTA amber (reserved for primary actions) */
+  /* 3-color palette (new) */
+  --palette-cyan: #5FFBF1; /* Bright Cyan - primary action */
+  --palette-cyan-rgb: 95,251,241;
+
+  --palette-teal: #3CC2B6; /* Teal - secondary accents */
+  --palette-teal-rgb: 60,194,182;
+
+  --palette-periwinkle: #86A8E7; /* Periwinkle - ambient elements */
+  --palette-periwinkle-rgb: 134,168,231;
+
+  /* full 3-color gradient for typography highlights / decorative borders */
+  --accent-gradient: linear-gradient(90deg, var(--palette-cyan) 0%, var(--palette-teal) 50%, var(--palette-periwinkle) 100%);
+
+  /* Preserve old semantic tokens but map them to the new palette where appropriate */
+  --sem-amber: #C47E1C; /* CTA amber (reserved for legacy actions) */
   --sem-amber-rgb: 196,126,28;
 
-  --sem-cyan: #1CB6C4; /* Hero */
-  --sem-cyan-rgb: 28,182,196;
+  /* Remap semantic tokens to the new cool palette for accents */
+  --sem-cyan: var(--palette-cyan);
+  --sem-cyan-rgb: var(--palette-cyan-rgb);
 
-  --sem-green: #1CC47E; /* About */
-  --sem-green-rgb: 28,196,126;
+  --sem-green: var(--palette-teal);
+  --sem-green-rgb: var(--palette-teal-rgb);
 
-  --sem-blue: #1C62C4; /* Projects */
-  --sem-blue-rgb: 28,98,196;
+  --sem-blue: var(--palette-periwinkle);
+  --sem-blue-rgb: var(--palette-periwinkle-rgb);
 
-  --sem-magenta: #C41C62; /* Contact */
+  --sem-magenta: #C41C62; /* keep existing magenta for contact if needed */
   --sem-magenta-rgb: 196,28,98;
 
   /* Primary accent exposed globally (use this for CTAs) */
-  --accent-primary: var(--sem-amber);
-  --accent-primary-rgb: var(--sem-amber-rgb);
+  --accent-primary: var(--palette-cyan);
+  --accent-primary-rgb: var(--palette-cyan-rgb);
 
   /* Keep the page background token available */
-  --bg-primary: #0f1115;
+  --bg-primary: #0F172A; /* Deep navy global background per design */
 }
 
 /* Ambient "LED" glow per section (very faint, large radial gradients) */
