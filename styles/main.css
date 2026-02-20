@@ -21,16 +21,15 @@
            - green, cyan, blue, magenta: categorical accents
         */
         --sem-amber: #C47E1C; /* Primary CTA */
-        --sem-green:  #1CC47E; /* Category: Green */
-        --sem-cyan:   #1CB6C4; /* Category: Cyan/Teal */
-        /* NOTE: original sem-blue (#1C62C4) failed WCAG contrast against dark background.
-           Replaced by an AA-accessible variant below. AAA candidate is provided as fallback. */
-        --sem-blue:   #4A85D9; /* adjusted for WCAG AA (contrast ~4.58) */
-        --sem-blue-aaa: #81AAE4; /* AAA candidate (contrast ~7.14) */
-        /* NOTE: original sem-magenta (#C41C62) failed WCAG contrast against dark background.
-           Replaced by an AA-accessible variant below. AAA candidate is provided as fallback. */
-        --sem-magenta:#EC3C85; /* adjusted for WCAG AA (contrast ~4.51) */
-        --sem-magenta-aaa: #E78DB3; /* AAA candidate (contrast ~7.19) */
+        --sem-amber-rgb: 196,126,28;
+        --sem-green:  #1CC47E; /* About */
+        --sem-green-rgb: 28,196,126;
+        --sem-cyan:   #1CB6C4; /* Hero */
+        --sem-cyan-rgb: 28,182,196;
+        --sem-blue:   #1C62C4; /* Projects */
+        --sem-blue-rgb: 28,98,196;
+        --sem-magenta:#C41C62; /* Contact */
+        --sem-magenta-rgb: 196,28,98;
 
         /* HSL variants for compatibility (legacy references) */
         /* Keep existing primary HSL as-is to avoid surprising global shifts; adjust only if desired later */
@@ -71,7 +70,6 @@
         --map-water-deep: 0 0% 8%;
         --map-forest: 0 0% 15%;
         --map-moss: 0 0% 18%;
-        --map-fern: 140 25% 60%; /* uses accent-secondary-hsl */
         --map-sand: 38 20% 76%;
         --map-stone: 0 0% 35%;
         --map-muted: 0 0% 55%;
@@ -79,6 +77,57 @@
         --map-paper: 0 0% 11%;
         --brand-black: 0 0% 8%;
         --brand-gold: 35 92% 50%;
+    }
+
+    /* Ambient "LED" glow per section (very faint, large radial gradients) */
+    .hero-section,
+    .page-about,
+    .projects-section,
+    .contact-section {
+      position: relative; /* ensure pseudo-elements are positioned properly */
+    }
+
+    .hero-section::before,
+    .page-about::before,
+    .projects-section::before,
+    .contact-section::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 1200px;
+      height: 700px;
+      filter: blur(120px);
+      z-index: -1;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero-section::before {
+      background: radial-gradient(circle at 30% 30%, rgba(var(--sem-cyan-rgb), 0.05) 0%, rgba(var(--sem-cyan-rgb), 0.02) 30%, transparent 60%);
+    }
+
+    .page-about::before {
+      background: radial-gradient(circle at 30% 40%, rgba(var(--sem-green-rgb), 0.05) 0%, rgba(var(--sem-green-rgb), 0.02) 30%, transparent 60%);
+    }
+
+    .projects-section::before {
+      background: radial-gradient(circle at 40% 30%, rgba(var(--sem-blue-rgb), 0.05) 0%, rgba(var(--sem-blue-rgb), 0.02) 30%, transparent 60%);
+    }
+
+    .contact-section::before {
+      background: radial-gradient(circle at 60% 40%, rgba(var(--sem-magenta-rgb), 0.05) 0%, rgba(var(--sem-magenta-rgb), 0.02) 30%, transparent 60%);
+    }
+
+    /* Hide heavy glows on small screens for performance and visual clarity */
+    @media (max-width: 900px) {
+      .hero-section::before,
+      .page-about::before,
+      .projects-section::before,
+      .contact-section::before {
+        display: none;
+      }
     }
 
     /* Small helpers / preview swatches */

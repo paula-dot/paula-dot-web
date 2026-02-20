@@ -124,17 +124,18 @@
 }
 
 .btn-primary {
-    background: var(--c-amber);
+    background: var(--accent-primary, var(--c-amber));
     color: var(--bg-primary);
     border: none;
-    box-shadow: 0 4px 12px hsla(35, 92%, 50%, 0.25);
+    box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb, 196,126,28), 0.25);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background: hsl(var(--primary-light));
+    /* slightly brighten amber on hover while keeping accessibility */
+    background: color-mix(in srgb, var(--accent-primary) 82%, white 18%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px hsla(35, 92%, 50%, 0.35);
+    box-shadow: 0 8px 22px rgba(var(--accent-primary-rgb, 196,126,28), 0.35);
     filter: brightness(1.04);
 }
 
@@ -151,7 +152,7 @@
 
 .btn-outline:hover,
 .btn-outline:focus {
-    background: rgba(245,158,11,0.08); /* ~8-10% amber */
+    background: rgba(245,158,11,0.08); /* ~8-10% amber (visual hint) */
     border-color: hsla(35, 92%, 50%, 0.65);
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(245,158,11,0.06);
@@ -273,6 +274,15 @@
 /* Slight color brighten on hover for the whole visual */
 .hero-visual:hover .node-graph svg .node-1, .hero-visual:hover .node-graph svg .node-5 {
     filter: drop-shadow(0 6px 14px rgba(196,126,28,0.22));
+}
+
+/* Ensure the hero SVG gradient uses the global CTA color for the stop */
+#hero svg defs linearGradient#g1 stop[offset="100%"] {
+    stop-color: var(--accent-primary);
+}
+
+#hero svg defs linearGradient#g1 stop[offset="0%"] {
+    stop-color: color-mix(in srgb, var(--accent-primary) 70%, white 30%);
 }
 
 /* Ensure transforms are smooth */

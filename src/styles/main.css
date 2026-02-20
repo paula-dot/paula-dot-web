@@ -53,4 +53,79 @@ html {
 :root {
   /* default header offset for scroll-margin-top; updated at runtime by Header component */
   --header-offset: 72px;
+
+  /* Semantic color tokens (section mapping strategy) */
+  --sem-amber: #C47E1C; /* CTA amber (reserved for primary actions) */
+  --sem-amber-rgb: 196,126,28;
+
+  --sem-cyan: #1CB6C4; /* Hero */
+  --sem-cyan-rgb: 28,182,196;
+
+  --sem-green: #1CC47E; /* About */
+  --sem-green-rgb: 28,196,126;
+
+  --sem-blue: #1C62C4; /* Projects */
+  --sem-blue-rgb: 28,98,196;
+
+  --sem-magenta: #C41C62; /* Contact */
+  --sem-magenta-rgb: 196,28,98;
+
+  /* Primary accent exposed globally (use this for CTAs) */
+  --accent-primary: var(--sem-amber);
+  --accent-primary-rgb: var(--sem-amber-rgb);
+
+  /* Keep the page background token available */
+  --bg-primary: #0f1115;
+}
+
+/* Ambient "LED" glow per section (very faint, large radial gradients) */
+.hero-section,
+.page-about,
+.projects-section,
+.contact-section {
+  position: relative; /* ensure pseudo-elements are positioned properly */
+}
+
+.hero-section::before,
+.page-about::before,
+.projects-section::before,
+.contact-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 700px;
+  filter: blur(120px);
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* Per-section color mappings (very low opacity to keep them subtle) */
+.hero-section::before {
+  background: radial-gradient(circle at 30% 30%, rgba(var(--sem-cyan-rgb), 0.05) 0%, rgba(var(--sem-cyan-rgb), 0.02) 30%, transparent 60%);
+}
+
+.page-about::before {
+  background: radial-gradient(circle at 30% 40%, rgba(var(--sem-green-rgb), 0.05) 0%, rgba(var(--sem-green-rgb), 0.02) 30%, transparent 60%);
+}
+
+.projects-section::before {
+  background: radial-gradient(circle at 40% 30%, rgba(var(--sem-blue-rgb), 0.05) 0%, rgba(var(--sem-blue-rgb), 0.02) 30%, transparent 60%);
+}
+
+.contact-section::before {
+  background: radial-gradient(circle at 60% 40%, rgba(var(--sem-magenta-rgb), 0.05) 0%, rgba(var(--sem-magenta-rgb), 0.02) 30%, transparent 60%);
+}
+
+/* Hide heavy glows on small screens for performance and visual clarity */
+@media (max-width: 900px) {
+  .hero-section::before,
+  .page-about::before,
+  .projects-section::before,
+  .contact-section::before {
+    display: none;
+  }
 }

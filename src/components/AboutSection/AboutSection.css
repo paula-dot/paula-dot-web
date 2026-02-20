@@ -4,27 +4,10 @@
     padding: 48px 16px 0;
 }
 
-.page-about .page-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-/* ==========================================
-   SECTION 1: ABOUT HERO (Bio + Avatar Card)
-   ========================================== */
-.about-hero {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 48px;
-    align-items: start;
-    margin-bottom: 48px;
-}
-
-/* Left: Bio Content */
-.about-bio {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+/* Expose semantic tokens locally for About Section */
+.page-about {
+    --sec-color: var(--sem-green);
+    --sec-color-rgb: var(--sem-green-rgb);
 }
 
 .page-about .page-title {
@@ -46,13 +29,13 @@
 .focus-pill {
     display: inline-block;
     padding: 8px 16px;
-    background: hsla(35, 92%, 50%, 0.15);
-    color: var(--accent-primary);
+    background: rgba(var(--sec-color-rgb), 0.08);
+    color: var(--sec-color);
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 50px;
     letter-spacing: 0.02em;
-    border: 1px solid hsla(35, 92%, 50%, 0.2);
+    border: 1px solid rgba(var(--sec-color-rgb), 0.12);
 }
 
 .bio-statement {
@@ -377,17 +360,17 @@
     stroke: currentColor; /* inherit color from the parent for flexible accents */
 }
 
-/* New per-service accent colors */
+/* New per-service accent colors: use semantic tokens instead of hard-coded hex */
 .service-card--backend-engineering {
-    color: #1C62C4; /* Blue for Backend Engineering */
+    color: var(--sem-blue); /* Blue for Backend Engineering */
 }
 
 .service-card--api-development {
-    color: #C41C62; /* Magenta for API Development */
+    color: var(--sem-magenta); /* Magenta for API Development */
 }
 
 .service-card--data-engineering {
-    color: #1CC47E; /* Green for Data Engineering */
+    color: var(--sem-green); /* Green for Data Engineering */
 }
 
 /* hover glow effect per card using the card's color */

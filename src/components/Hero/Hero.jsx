@@ -51,8 +51,8 @@ export default function Hero() {
                         <svg viewBox="0 0 480 320" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
                             <defs>
                                 <linearGradient id="g1" x1="0" x2="1">
-                                    <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.95" />
-                                    <stop offset="100%" stopColor="#C47E1C" stopOpacity="0.95" />
+                                    <stop offset="0%" style={{ stopColor: "color-mix(in srgb, var(--accent-primary) 70%, white 30%)", stopOpacity: 0.95 }} />
+                                    <stop offset="100%" style={{ stopColor: "var(--accent-primary)", stopOpacity: 0.95 }} />
                                 </linearGradient>
                                 <filter id="s1" x="-50%" y="-50%" width="200%" height="200%">
                                     <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#000" floodOpacity="0.25" />
