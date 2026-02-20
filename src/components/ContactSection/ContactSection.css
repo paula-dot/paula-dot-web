@@ -58,9 +58,10 @@
 
 .left-cta h3 {
     margin: 0;
-    font-size: 1.125rem;
-    color: var(--text-light);
-    line-height: 1.2;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-text-heading);
+    line-height: 1.1;
 }
 
 .left-cta p {
@@ -205,24 +206,27 @@
     justify-content: center;
     width: 100%;
     padding: 0.9rem 1rem;
-    background-color: var(--accent-primary, var(--palette-cyan)); /* primary cyan */
-    color: #0B1120; /* CRUCIAL: dark text to meet WCAG contrast on bright cyan */
-    font-weight: 800;
-    font-size: 1rem;
+    background-color: var(--color-accent-cyan, #22D3EE);
+    color: var(--color-text-dark, #0B1120);
     border: none;
     border-radius: 0.6rem;
     cursor: pointer;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    transition: all 200ms ease; /* match .btn transition timing */
 }
 
 .send-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(var(--accent-primary-rgb, 196,126,28), 0.14);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background-color: var(--color-accent-cyan-hover, #06B6D4);
 }
 
 .send-button:focus {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(var(--accent-primary-rgb, 196,126,28), 0.12);
+    box-shadow: 0 0 0 4px rgba(245,158,11,0.25), 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.send-button:active {
+    transform: translateY(0);
 }
 
 /* Neutralize the global magenta glow for this section (override) */

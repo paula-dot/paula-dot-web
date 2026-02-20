@@ -1,12 +1,13 @@
 .hero-section {
     position: relative;
     width: 100%;
-    padding: 100px 16px; /* increased vertical padding for breathing room */
+    /* reduced vertical padding to tighten spacing with the next section */
+    padding: 75px 16px 0; /* top: 56px, left/right: 16px, bottom: 8px */
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
-    min-height: 80vh; /* keep the grand entrance height */
+    min-height: 68vh; /* slightly reduced hero height to tighten section spacing */
 }
 
 /* Hero Card - borderless / full-width look */
@@ -18,7 +19,7 @@
     border: 1px solid rgba(134,168,231,0.06); /* faint periwinkle border */
     box-shadow: 0 12px 30px rgba(2,6,23,0.6);
     padding: 48px; /* a bit more interior space */
-    max-width: 1100px;
+    max-width:1700px;
     width: calc(100% - 32px);
     margin: 0 auto;
 }
@@ -26,7 +27,8 @@
 /* Two-column grid container */
 .hero-container {
     position: relative;
-    width: 100%;
+    /* width: 100%; */
+    width: 1600px;
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 32px;
@@ -35,7 +37,7 @@
 
 /* Expose semantic color CSS variables locally to simplify reference in this component */
 .hero-card {
-    --c-amber: var(--sem-amber, #C47E1C);
+    --c-amber: var(--color-accent-gold, #C47E1C);
     --c-green: var(--sem-green, var(--palette-teal));
     --c-cyan: var(--sem-cyan, var(--palette-cyan));
     --c-blue: var(--sem-blue, var(--palette-periwinkle));
@@ -58,7 +60,7 @@
     font-size: clamp(2rem, 5.2vw, 3rem);
     font-weight: 900;
     /* Use the gold accent for the name highlight when appropriate */
-    color: var(--color-accent-gold, var(--sem-amber));
+    color: var(--color-accent-gold, #C47E1C);
     margin: 0;
     line-height: 1;
     letter-spacing: 0.05em;
@@ -66,8 +68,8 @@
 
 /* Greeting */
 .hero-greeting {
-    font-size: 0.95rem; /* reduced to a subtle micro-label */
-    color: hsl(var(--text-muted));
+    font-size: 1rem; /* reduced to a subtle micro-label */
+    color: var(--color-text-muted);
     margin: 0;
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -86,7 +88,7 @@
 
 /* Default title line color (keeps high contrast for primary line) */
 .title-line {
-    color: var(--text-primary);
+    color: var(--color-text-heading);
 }
 
 /* Stronger visual hierarchy: make the first title line the visual priority */
@@ -141,7 +143,7 @@
 
 .btn-primary {
     background: var(--color-accent-cyan, var(--palette-cyan));
-    color: var(--color-text-dark, var(--bg-primary));
+    color: var(--color-text-dark, #0B1120);
     border: none;
     box-shadow: 0 6px 20px rgba(var(--palette-cyan-rgb), 0.18);
 }
@@ -160,7 +162,7 @@
 /* Secondary (outline) button: brighter border and subtle amber hover */
 .btn-outline {
     background: transparent;
-    color: var(--text-primary);
+    color: var(--color-text-heading);
     border: 2px solid hsla(35, 92%, 50%, 0.45); /* brighter outline */
 }
 
@@ -292,11 +294,11 @@
 
 /* Ensure the hero SVG gradient uses the global CTA color for the stop */
 #hero svg stop[offset="100%"] {
-    stop-color: var(--accent-primary);
+    stop-color: var(--color-accent-cyan);
 }
 
 #hero svg stop[offset="0%"] {
-    stop-color: color-mix(in srgb, var(--accent-primary) 70%, white 30%);
+    stop-color: color-mix(in srgb, var(--color-accent-cyan) 70%, white 30%);
 }
 
 /* Ensure transforms are smooth */
@@ -307,7 +309,7 @@
 @media (max-width: 900px) {
     .hero-section {
         min-height: auto;
-        padding: 32px 16px;
+        padding: 32px 16px 8px; /* reduce bottom padding on tablet */
     }
 
     .hero-card {
@@ -349,7 +351,7 @@
 
 @media (max-width: 600px) {
     .hero-section {
-        padding: 24px 16px;
+        padding: 24px 16px 8px; /* reduce bottom padding on small screens */
     }
 
     .hero-card {

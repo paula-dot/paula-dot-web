@@ -24,29 +24,29 @@
 
 /* Primary button - use the new cyan accent and dark text for accessibility */
 .btn-primary {
-    background-color: var(--color-accent-cyan, var(--accent-primary));
-    color: var(--color-text-dark, var(--bg-primary));
+    background-color: var(--color-accent-cyan, #22D3EE);
+    color: var(--color-text-dark, #0B1120);
 }
 
 .btn-primary:hover {
-    background-color: var(--color-accent-cyan-hover, hsl(var(--primary-light)));
+    background-color: var(--color-accent-cyan-hover, #06B6D4);
 }
 
 .btn-primary:focus {
-    box-shadow: 0 0 0 4px hsla(35, 92%, 50%, 0.25), 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0 4px rgba(245,158,11,0.25), 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Secondary button - Outlined */
 .btn-secondary {
     background-color: transparent;
     border: 2px solid hsla(35, 92%, 50%, 0.3);
-    color: var(--text-primary);
+    color: var(--color-text-heading);
 }
 
 .btn-secondary:hover {
-    background-color: var(--accent-primary);
-    border-color: var(--accent-primary);
-    color: var(--bg-primary);
+    background-color: var(--color-accent-gold);
+    border-color: var(--color-accent-gold);
+    color: var(--color-text-dark);
 }
 
 .btn-secondary:focus {
@@ -55,14 +55,14 @@
 
 /* Accent button - Warm Beige (#D4C5B0) */
 .btn-accent {
-    /* Use existing surface token if present, otherwise fall back to the gold accent */
-    background-color: var(--surface-secondary, var(--color-accent-gold));
-    color: var(--bg-primary);
+    /* Use the gold accent token as a stable fallback */
+    background-color: var(--color-accent-gold, #D4C5B0);
+    color: var(--color-text-dark);
     border: none;
 }
 
 .btn-accent:hover {
-    background-color: hsl(var(--accent-light));
+    background-color: rgba(212,197,176,0.95);
 }
 
 .btn-accent:focus {

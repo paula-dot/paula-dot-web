@@ -1,7 +1,12 @@
 .page-about {
     color: inherit;
     background: transparent;
-    padding: 48px 16px 48px; /* increase bottom padding to separate from next section */
+    /* further reduce top padding to tighten gap with hero */
+    padding: 0 16px 40px; /* top: 8px, right/left: 16px, bottom: 40px */
+    /* match hero card width/centering for consistent layout */
+    max-width: 1700px;
+    width: calc(100% - 32px);
+    margin: 0 auto;
 }
 
 /* Expose semantic tokens locally for About Section */
@@ -13,7 +18,7 @@
 .page-about .page-title {
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: var(--color-text-heading);
     margin: 0 0 16px 0;
     line-height: 1.1;
 }
@@ -41,7 +46,7 @@
 .bio-statement {
     font-size: 1.15rem;
     line-height: 1.75;
-    color: hsl(var(--text-secondary));
+    color: var(--color-text-body);
     margin: 0;
 }
 
@@ -73,10 +78,10 @@
 .stack-card h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--color-text-heading);
     margin-bottom: 16px;
     padding-bottom: 12px;
-    border-bottom: 2px solid var(--accent-primary);
+    border-bottom: 2px solid var(--color-accent-cyan);
     display: inline-block;
 }
 
@@ -91,9 +96,8 @@
 
 .interests-list li {
     font-size: 0.95rem;
-    color: hsl(var(--text-secondary));
-    padding: 8px 0;
-    padding-left: 20px;
+    color: var(--color-text-body);
+    padding: 8px 0 8px 20px;
     position: relative;
     transition: color 0.2s ease;
 }
@@ -106,12 +110,12 @@
     transform: translateY(-50%);
     width: 8px;
     height: 8px;
-    background: var(--accent-primary);
+    background: var(--color-accent-cyan);
     border-radius: 50%;
 }
 
 .interests-list li:hover {
-    color: var(--accent-primary);
+    color: var(--color-accent-cyan);
 }
 
 .stack-categories {
@@ -123,7 +127,7 @@
 .stack-category h4 {
     font-size: 0.8rem;
     font-weight: 600;
-    color: hsl(var(--text-muted));
+    color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 12px;
@@ -142,18 +146,18 @@
     padding: 8px 12px;
     background: hsla(35, 92%, 50%, 0.08);
     border-radius: 8px;
-    border-left: 3px solid var(--accent-primary);
+    border-left: 3px solid var(--color-accent-cyan);
 }
 
 .stack-item-name {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--color-text-heading);
 }
 
 .stack-item-desc {
     font-size: 0.8rem;
-    color: hsl(var(--text-muted));
+    color: var(--color-text-muted);
     font-style: italic;
 }
 
@@ -193,7 +197,7 @@
     justify-content: center;
     background: hsla(35, 92%, 50%, 0.15);
     border-radius: 12px;
-    color: var(--accent-primary);
+    color: var(--color-accent-cyan);
 }
 
 .detail-icon svg {
@@ -208,21 +212,21 @@
 .detail-content h3 {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--color-text-heading);
     margin: 0 0 12px 0;
 }
 
 .detail-title {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--accent-primary);
+    color: var(--color-accent-cyan);
     margin: 0 0 8px 0;
 }
 
 .detail-desc {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: hsl(var(--text-secondary));
+    color: var(--color-text-body);
     margin: 0;
 }
 
@@ -239,7 +243,7 @@
     display: inline-block;
     padding: 6px 12px;
     background: hsla(35, 92%, 50%, 0.1);
-    color: var(--accent-primary);
+    color: var(--color-accent-cyan);
     font-size: 0.85rem;
     font-weight: 500;
     border-radius: 6px;
@@ -254,7 +258,7 @@
 }
 
 .goals-card {
-    background: linear-gradient(135deg, hsl(var(--primary-dark)) 0%, var(--accent-primary) 100%);
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-accent-cyan) 100%);
     border-radius: 12px;
     padding: 32px;
     box-shadow: 0 16px 32px hsla(35, 92%, 50%, 0.2);
@@ -263,7 +267,7 @@
 .goals-card h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--bg-primary);
+    color: var(--color-text-dark);
     margin: 0 0 24px 0;
 }
 
@@ -291,7 +295,7 @@
 .goal-text {
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--bg-primary);
+    color: var(--color-text-dark);
 }
 
 /* ==========================================
@@ -342,7 +346,7 @@
 }
 
 .service-card .service-desc {
-    color: hsl(var(--text-muted));
+    color: var(--color-text-muted);
     line-height: 1.6; /* increase line-height for readability */
     font-size: 0.98rem; /* slightly larger text */
     margin: 0.5rem 0 0 0;
@@ -486,7 +490,7 @@
 
 @media (max-width: 600px) {
     .page-about {
-        padding: 32px 16px 32px; /* preserve bottom padding on small screens */
+        padding: 16px 16px 28px; /* reduced top padding on small screens */
     }
 
     .about-hero {

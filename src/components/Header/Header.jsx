@@ -16,6 +16,7 @@ export function Header() {
     };
 
     const [open, setOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const [active, setActive] = useActiveSection(NAV_ITEMS.map(i => i.id), { idFallback: ID_FALLBACK });
     const menuButtonRef = useRef(null);
 
@@ -55,6 +56,26 @@ export function Header() {
             window.removeEventListener('resize', onResize);
         };
     }, [open]);
+
+    // toggle a `scrolled` state when the page is scrolled past a small threshold
+    useEffect(() => {
+        let ticking = false;
+        const threshold = 24;
+        const onScroll = () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                const y = window.scrollY || window.pageYOffset;
+                setScrolled(y > threshold);
+                ticking = false;
+            });
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // set initial value
+        onScroll();
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     // useActiveSection hook handles observing and updating `active`
 
@@ -140,7 +161,7 @@ export function Header() {
     }, []);
 
     return (
-        <header role="banner" className={open ? 'open' : ''}>
+        <header role="banner" className={`${open ? 'open' : ''}${scrolled ? ' scrolled' : ''}`}>
             <a className="skip-link" href="/#main">Skip to content</a>
 
             <div className="container">

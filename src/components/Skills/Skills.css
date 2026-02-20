@@ -1,6 +1,7 @@
 .skills-section {
-    padding: 4rem 1.5rem;
-    max-width: 1100px;
+    padding: 4rem 16px;
+    max-width: 1700px;
+    width: calc(100% - 32px);
     margin: 0 auto;
 }
 

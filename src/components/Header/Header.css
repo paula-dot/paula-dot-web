@@ -42,7 +42,7 @@ header .container {
 
 /* Give the nav more vertical breathing room so items don't sit too high */
 header .navbar {
-    padding: 2rem 24px; /* vertical padding: 2rem top & bottom, horizontal preserved */
+    padding: 1.28rem 24px; /* vertical padding: 2rem top & bottom, horizontal preserved */
 }
 
 .navbar {
@@ -118,9 +118,9 @@ header .navbar {
     background: var(--color-accent-cyan, #22D3EE);
     border-radius: 2px;
     transform: scaleX(0);
-    transform-origin: left;
+    transform-origin: center; /* changed to center */
     opacity: 0;
-    transition: transform 220ms cubic-bezier(.2,.8,.2,1), opacity 180ms ease;
+    transition: transform 260ms cubic-bezier(.2,.8,.2,1), opacity 180ms ease;
     pointer-events: none;
 }
 
@@ -238,6 +238,19 @@ header .navbar {
     gap: 20px;
     align-items: center;
     justify-content: center;
+}
+
+/* Header background/contrast when scrolled */
+header.scrolled, header.open.scrolled {
+    background: rgba(11,17,32,0.9); /* slightly translucent background to lift header */
+    border-bottom-color: rgba(255,255,255,0.06);
+}
+
+/* Tweak link contrast when header is scrolled */
+header.scrolled .nav-links a,
+header.scrolled .brand,
+header.scrolled .logo .brand {
+    color: var(--color-text-heading);
 }
 
 /* Visually hidden helper (accessible label) */
