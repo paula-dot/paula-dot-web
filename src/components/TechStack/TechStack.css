@@ -14,7 +14,7 @@
 
 .techstack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
   align-items: start;
 }
@@ -32,21 +32,39 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center;
 }
 
 .tech-pill {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.9rem;
   line-height: 1;
-  background: rgba(var(--palette-teal-rgb), 0.08); /* subtle teal wash */
+  background: rgba(var(--palette-teal-rgb), 0.06); /* subtle wash */
   color: var(--text-primary);
-  border: 1px solid rgba(var(--palette-teal-rgb), 0.16);
+  border: 1px solid rgba(var(--palette-teal-rgb), 0.12);
   text-decoration: none;
   transition: border-color .16s ease, box-shadow .16s ease, transform .14s ease, background .16s ease;
+  width: auto;
+  height: 40px; /* consistent pill height to show single badge */
+  padding: 0.4rem 0.5rem; /* consistent padding */
+}
+
+.tech-pill-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+  object-fit: contain;
+}
+
+.tech-pill-fallback {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  padding: 0 0.5rem;
 }
 
 .tech-pill:hover,

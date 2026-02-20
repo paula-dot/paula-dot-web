@@ -301,8 +301,9 @@
 .services-grid {
     display: grid;
     grid-template-columns: 1fr; /* 1 column on mobile */
-    gap: 2rem; /* spacing between cards */
+    gap: 2.5rem; /* increased spacing between cards */
     margin-top: 3rem;
+    width: 100%; /* ensure grid uses full width of parent */
 }
 
 @media (min-width: 768px) {
@@ -313,7 +314,7 @@
 
 @media (min-width: 1024px) {
     .services-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop to better use space */
         gap: 3rem;
     }
 }
@@ -323,13 +324,15 @@
     flex-direction: column;
     align-items: center; /* centers items horizontally */
     text-align: center; /* centers text */
-    padding: 1rem;
+    padding: 1.25rem;
     transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, border-color 220ms ease;
     will-change: transform;
     background: rgba(12, 20, 36, 0.72); /* dark elevated container */
     border-radius: 12px;
     border: 1px solid rgba(var(--palette-periwinkle-rgb, 134, 168, 231), 0.06); /* periwinkle border */
     --service-accent: var(--palette-cyan);
+    width: 100%; /* consume full grid column */
+    min-height: 140px; /* prevent cards from being too tall and squished */
 }
 
 .service-card:hover {
@@ -338,28 +341,37 @@
     border-color: rgba(var(--palette-cyan-rgb), 0.22); /* cyan border on hover */
 }
 
+.service-card .service-desc {
+    color: hsl(var(--text-muted));
+    line-height: 1.6; /* increase line-height for readability */
+    font-size: 0.98rem; /* slightly larger text */
+    margin: 0.5rem 0 0 0;
+}
+
 .service-icon-wrap {
     background: rgba(12, 20, 36, 0.6);
-    padding: 1rem;
+    padding: 0.8rem;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.03);
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
     transition: background 220ms ease, transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
-.service-card:hover .service-icon-wrap {
-    transform: translateY(-4px);
-    background: linear-gradient(180deg, rgba(var(--palette-teal-rgb), 0.06), rgba(255, 255, 255, 0.01));
-    border-color: rgba(var(--palette-cyan-rgb), 0.12);
+.service-card::after {
+    /* Adjust hover glow to be subtle and positioned correctly */
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px var(--service-accent);
+    opacity: 0; /* hidden by default; revealed on hover */
+    transition: opacity 220ms ease, box-shadow 220ms ease;
 }
 
-.service-card .service-title {
-    color: var(--text-primary);
-}
-
-.service-card .service-desc {
-    color: hsl(var(--text-muted));
+.service-card:hover::after {
+    opacity: 0.06;
 }
 
 /* set per-service accent variables (used for icon color and hover glow) */

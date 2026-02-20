@@ -18,18 +18,19 @@
     padding: 4rem 1.5rem;
 }
 
-/* Expose semantic tokens locally for Contact section */
+/* Remove magenta accent for this section and prefer neutral tokens */
 .contact-section {
-    --sec-color: var(--sem-magenta);
-    --sec-color-rgb: var(--sem-magenta-rgb);
+    --sec-color: var(--text-light); /* avoid magenta here */
+    --sec-color-rgb: 230,233,238;
 }
 
 /* Card container centered and constrained */
 .contact-card {
     width: 100%;
     max-width: 980px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    /* Use a clean dark gray card background as requested */
+    background: #111827; /* solid dark slate */
+    border: 1px solid rgba(255,255,255,0.03);
     box-shadow: 0 8px 30px rgba(2,6,23,0.7);
     border-radius: 1rem;
     display: grid;
@@ -43,7 +44,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    /* remove the tinted gradient background entirely */
+    background: transparent;
 }
 
 .left-cta {
@@ -103,10 +105,10 @@
     width: 56px;
     height: 56px;
     /* Make the icon inherit a color so we can override stroke via CSS */
-    color: var(--sec-color); /* magenta for the email icon */
+    color: var(--sec-color); /* use neutral color instead of magenta */
 }
 
-/* Override inline SVG stroke colors for the email icon to use magenta */
+/* Override inline SVG stroke colors for the email icon to use neutral color */
 .email-icon path {
     stroke: var(--sec-color) !important;
 }
@@ -147,10 +149,11 @@
     font-weight: 700;
 }
 
+/* Input/textarea: use slightly lighter slate with a subtle neutral border */
 .contact-form input,
 .contact-form textarea {
-    background: var(--input-bg);
-    border: 1px solid var(--input-border);
+    background: #1F2937; /* slate background for inputs */
+    border: 1px solid rgba(255,255,255,0.1); /* subtle neutral border */
     color: var(--text-light);
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
@@ -162,11 +165,12 @@
     color: rgba(230,233,238,0.55);
 }
 
+/* Focus state: light up with bright cyan only when focused */
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(255,176,0,0.08);
-    border-color: var(--accent);
+    border-color: var(--palette-cyan);
+    box-shadow: 0 0 0 4px rgba(var(--palette-cyan-rgb), 0.08);
 }
 
 .contact-form textarea {
@@ -180,8 +184,8 @@
     justify-content: center;
     width: 100%;
     padding: 0.9rem 1rem;
-    background-color: var(--accent-primary, #C47E1C); /* primary amber */
-    color: var(--bg-primary, #0f1115);
+    background-color: var(--accent-primary, var(--palette-cyan)); /* primary cyan */
+    color: #000; /* ensure pitch-black/dark text for readability */
     font-weight: 800;
     font-size: 1rem;
     border: none;
@@ -198,6 +202,11 @@
 .send-button:focus {
     outline: none;
     box-shadow: 0 0 0 4px rgba(var(--accent-primary-rgb, 196,126,28), 0.12);
+}
+
+/* Neutralize the global magenta glow for this section (override) */
+.contact-section::before {
+    display: none !important;
 }
 
 /* Responsive: stack columns on small screens */

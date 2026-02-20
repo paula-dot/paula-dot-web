@@ -1,7 +1,7 @@
 const services = [
     {
         title: "Backend Engineering",
-        description: "Designing scalable backend architectures and writing robust business logic. I build secure, high-performance systems utilizing Go and Python to handle complex data workflows.",
+        description: "Designing scalable backend architectures and writing robust business logic. I build secure, high-performance systems using Go and Python.",
         icon: (
             <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" className="service-svg">
               <rect x="3" y="4" width="18" height="6" rx="1"></rect>
@@ -16,7 +16,7 @@ const services = [
     },
     {
         title: "API Development",
-        description: "Crafting highly responsive RESTful APIs and microservices. My APIs focus on structured access, sub-100ms response times, and comprehensive documentation for seamless client integration.",
+        description: "Crafting responsive RESTful APIs and microservices with clear documentation for client integration.",
         icon: (
             <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" className="service-svg">
               <circle cx="12" cy="12" r="3"></circle>
@@ -37,7 +37,7 @@ const services = [
     },
     {
         title: "Data Engineering",
-        description: "Developing robust data pipelines and ETL processes. I specialize in structuring complex datasets, spatial data processing (GIS), and managing high-throughput PostgreSQL databases.",
+        description: "Developing robust data pipelines and ETL processes, specializing in spatial data processing and high-throughput databases.",
         icon: (
             <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" className="service-svg">
               <ellipse cx="12" cy="6" rx="8" ry="2.5"></ellipse>
@@ -51,4 +51,3 @@ const services = [
 ];
 
 export default services;
-

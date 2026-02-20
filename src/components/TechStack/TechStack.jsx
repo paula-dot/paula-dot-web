@@ -21,18 +21,23 @@ export default function TechStack({ categories = [] }) {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={item.name}
+                        title={item.name}
                       >
+                        {/* Show only the badge/icon; remove duplicate plain text for visual clarity */}
                         {item.icon ? (
-                          <img src={item.icon} alt="" className="tech-pill-icon" />
-                        ) : null}
-                        {item.name}
+                          <img src={item.icon} alt={item.name} className="tech-pill-icon" />
+                        ) : (
+                          <span className="tech-pill-fallback" aria-hidden="true">{item.name}</span>
+                        )}
                       </a>
                     ) : (
-                      <span className="tech-pill" tabIndex={0} aria-label={item.name}>
+                      <span className="tech-pill" tabIndex={0} aria-label={item.name} title={item.name}>
                         {item.icon ? (
-                          <img src={item.icon} alt="" className="tech-pill-icon" />
-                        ) : null}
-                        {item.name}
+                          <img src={item.icon} alt={item.name} className="tech-pill-icon" />
+                        ) : (
+                          <span className="tech-pill-fallback" aria-hidden="true">{item.name}</span>
+                        )}
                       </span>
                     )}
                   </li>

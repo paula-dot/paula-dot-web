@@ -16,7 +16,10 @@
 /* Header */
 .projects-header {
     margin-bottom: 32px;
-    max-width: 700px;
+    max-width: 100%; /* allow header to span full content width */
+    display: flex;
+    flex-direction: column; /* ensure title/intro stack above the grid */
+    gap: 12px;
 }
 
 .projects-title {
