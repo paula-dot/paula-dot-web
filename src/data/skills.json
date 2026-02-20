@@ -2,29 +2,11 @@
   {
     "category": "Web & Backend",
     "skills": [
-      { "name": "HTML", "logo": "https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white", "link": "https://developer.mozilla.org/en-US/docs/Web/HTML" },
-      { "name": "CSS", "logo": "https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white", "link": "https://developer.mozilla.org/en-US/docs/Web/CSS" },
       { "name": "JavaScript", "logo": "https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black", "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
       { "name": "React", "logo": "https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black", "link": "https://reactjs.org/" },
-      { "name": "PHP", "logo": "https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white", "link": "https://www.php.net/" },
       { "name": "Go", "logo": "https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white", "link": "https://golang.org/" },
-      { "name": "Gin", "logo": "https://img.shields.io/badge/Gin-008ECF?style=for-the-badge&logo=go&logoColor=white", "link": "https://gin-gonic.com/" },
       { "name": "Python", "logo": "https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white", "link": "https://www.python.org/" },
-      { "name": "Django", "logo": "https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white", "link": "https://www.djangoproject.com/" },
-      { "name": "FastAPI", "logo": "https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white", "link": "https://fastapi.tiangolo.com/" },
-      { "name": "REST", "logo": "https://img.shields.io/badge/REST-FF6F00?style=for-the-badge&logo=api&logoColor=white", "link": "https://restfulapi.net/" },
-      { "name": "Docker", "logo": "https://img.shields.io/badge/Docker-1D63ED?style=for-the-badge&logo=docker&logoColor=white", "link": "https://www.docker.com/" },
-      { "name": "TypeScript" },
-      { "name": "SQL" },
-      { "name": "Git" }
-    ]
-  },
-  {
-    "category": "Machine Learning & AI",
-    "skills": [
-      { "name": "Scikit-Learn", "logo": "https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white", "link": "https://scikit-learn.org/" },
-      { "name": "Pandas", "logo": "https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white", "link": "https://pandas.pydata.org/" },
-      { "name": "NumPy", "logo": "https://img.shields.io/badge/Numpy-4DABCF?style=for-the-badge&logo=numpy&logoColor=white", "link": "https://numpy.org/" }
+      { "name": "Docker", "logo": "https://img.shields.io/badge/Docker-1D63ED?style=for-the-badge&logo=docker&logoColor=white", "link": "https://www.docker.com/" }
     ]
   },
   {
@@ -42,14 +24,6 @@
       { "name": "QGIS", "logo": "https://img.shields.io/badge/QGIS-589632?style=for-the-badge&logo=qgis&logoColor=white", "link": "https://qgis.org/" },
       { "name": "GRASS GIS", "logo": "https://img.shields.io/badge/GRASS--GIS-77B829?style=for-the-badge", "link": "https://grass.osgeo.org/" },
       { "name": "PostGIS", "logo": "https://img.shields.io/badge/PostGIS-4288B0?style=for-the-badge&logo=postgresql&logoColor=white", "link": "https://postgis.net/" }
-    ]
-  },
-  {
-    "category": "DevOps & Infrastructure",
-    "skills": [
-      { "name": "Linux" },
-      { "name": "CI/CD" },
-      { "name": "AWS / GCP" }
     ]
   }
 ]

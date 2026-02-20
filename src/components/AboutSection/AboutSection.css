@@ -1,7 +1,7 @@
 .page-about {
     color: inherit;
     background: transparent;
-    padding: 48px 16px 0;
+    padding: 48px 16px 48px; /* increase bottom padding to separate from next section */
 }
 
 /* Expose semantic tokens locally for About Section */
@@ -486,7 +486,7 @@
 
 @media (max-width: 600px) {
     .page-about {
-        padding: 32px 16px;
+        padding: 32px 16px 32px; /* preserve bottom padding on small screens */
     }
 
     .about-hero {

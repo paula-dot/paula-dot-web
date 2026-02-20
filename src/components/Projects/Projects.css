@@ -76,6 +76,7 @@
    PROJECT CARD - Case Study Design
    ========================================== */
 .project-card {
+    position: relative; /* contains ::before and .project-status */
     background: rgba(12, 20, 36, 0.78);
     border-radius: 12px;
     overflow: hidden;
@@ -96,7 +97,7 @@
 .project-card::before {
     content: "";
     position: absolute;
-    inset: -1px; /* sits just outside the card */
+    inset: -1px; /* keep the subtle border effect but contained by position:relative */
     border-radius: 13px;
     padding: 1px;
     background: linear-gradient(90deg, rgba(var(--palette-cyan-rgb),0.9), rgba(var(--palette-teal-rgb),0.9) 50%, rgba(var(--palette-periwinkle-rgb),0.9));
@@ -285,6 +286,17 @@
    RESPONSIVE DESIGN
    ========================================== */
 @media (max-width: 900px) {
+    .projects-layout {
+        grid-template-columns: 1fr; /* stack on smaller screens */
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+    .projects-left,
+    .projects-right {
+        padding: 0;
+    }
+
     .projects-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 24px;
