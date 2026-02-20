@@ -1,11 +1,8 @@
 import './AboutSection.css'
+import services from './services'
 
 export default function AboutSection() {
-    const professionalFocus = [
-        "Backend Software Engineering",
-        "Data Engineering",
-    ];
-
+    /*
     const technicalInterests = [
         "Distributed Systems",
         "API and Microservice Architecture",
@@ -46,6 +43,7 @@ export default function AboutSection() {
         "Build open-source infrastructure and developer tools",
         "Contribute to scalable financial and analytical technology systems"
     ];
+    */
 
     return (
         <section className="page-about" id="about">
@@ -57,13 +55,6 @@ export default function AboutSection() {
                     <div className="about-bio">
                         <div className="bio-block">
                             <h2 className="page-title">About Me</h2>
-
-                            <div className="focus-pills">
-                                {professionalFocus.map((focus, idx) => (
-                                    <span key={idx} className="focus-pill">{focus}</span>
-                                ))}
-                            </div>
-
                             <p className="bio-statement">
                                 I specialize in designing and building scalable backend systems,
                                 data pipelines, and infrastructure automation tools. My work emphasizes
@@ -71,12 +62,20 @@ export default function AboutSection() {
                             </p>
                         </div>
                     </div>
+                </div>
 
-                    <div className="avatar-card">
-                        {/* <div className="avatar-card-inner">
-                            <span className="avatar-initials">SE</span>
-                            <span className="avatar-label">Software Engineer</span>
-                        </div> */}
+                {/* Insert the services grid here (no title) */}
+                <div className="mt-12">
+                    <div className="services-grid">
+                        {services.map((service, index) => (
+                            <div key={index} className="service-card">
+                                <div className="service-icon-wrap">
+                                    {service.icon}
+                                </div>
+                                <h3 className="service-title">{service.title}</h3>
+                                <p className="service-desc">{service.description}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
 

@@ -46,11 +46,21 @@
 
 /* Name */
 .hero-name {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: hsl(var(--text-secondary));
+    font-size: clamp(2rem, 5.2vw, 3rem);
+    font-weight: 900;
+    color: var(--accent-primary);
     margin: 0;
+    line-height: 1;
     letter-spacing: 0.05em;
+}
+
+/* Greeting */
+.hero-greeting {
+    font-size: 2rem;
+    color: hsl(var(--text-muted));
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 /* Headline */
@@ -78,9 +88,9 @@
 /* Subtext */
 .hero-subtext {
     font-size: 1.125rem;
-    line-height: 1.7;
+    line-height: 1.7; /* generous for readability */
     color: hsl(var(--text-secondary));
-    max-width: 520px;
+    max-width: 56ch; /* target ~45-60 characters per line */
 }
 
 /* CTAs */
@@ -122,6 +132,102 @@
     border: 2px solid hsla(35, 92%, 50%, 0.3);
 }
 
+/* Right column visual */
+.hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 420px;
+    margin-left: auto;
+    --parallax: 0px; /* default value for JS-updated var */
+}
+
+.node-graph {
+    width: 100%;
+    border-radius: 14px;
+    padding: 12px;
+    position: relative;
+    transform: translateY(var(--parallax, 0));
+}
+
+.node-graph svg { display: block; width: 100%; height: auto; }
+
+/* ambient glow behind the graph */
+.node-graph::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 140px;
+    background: radial-gradient(circle at center, rgba(245,158,11,0.12) 0%, rgba(245,158,11,0.05) 30%, transparent 60%);
+    filter: blur(26px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero-visual:hover .node-graph { transform: translateY(-4px); }
+
+/* Node animations */
+@keyframes floatY {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes floatSmall {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.85; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .node, .accent { animation: none !important; }
+}
+
+/* Apply animations with slight offsets for natural feel */
+.node-1 { transform-origin: center; animation: floatY 6s ease-in-out infinite; }
+.node-2 { transform-origin: center; animation: floatSmall 5s ease-in-out 0.6s infinite; }
+.node-3 { transform-origin: center; animation: floatY 7s ease-in-out 0.2s infinite; }
+.node-4 { transform-origin: center; animation: floatSmall 5.6s ease-in-out 0.3s infinite; }
+.node-5 { transform-origin: center; animation: floatY 6.8s ease-in-out 0.4s infinite; }
+
+.accent-1 { transform-origin: center; animation: pulse 4.2s ease-in-out 0.2s infinite; }
+.accent-2 { transform-origin: center; animation: pulse 4.6s ease-in-out 0.5s infinite; }
+.accent-3 { transform-origin: center; animation: pulse 3.8s ease-in-out 0.8s infinite; }
+
+/* Node wrap transforms (pointer + parallax) */
+.node-graph {
+    transform: translateY(var(--parallax, 0));
+}
+
+.node-wrap, .accent-wrap {
+    transition: transform 300ms cubic-bezier(.2,.9,.2,1);
+    will-change: transform;
+}
+
+/* Smaller transforms for accent wraps to avoid visual jump */
+.accent-wrap { transition: transform 360ms cubic-bezier(.2,.9,.2,1); }
+
+/* Slight color brighten on hover for the whole visual */
+.hero-visual:hover .node-graph svg .node-1, .hero-visual:hover .node-graph svg .node-5 {
+    filter: drop-shadow(0 6px 14px rgba(245,158,11,0.22));
+}
+
+/* Ensure transforms are smooth */
+.node, .accent {
+    transition: transform 220ms ease, opacity 220ms ease, filter 220ms ease;
+}
+
 @media (max-width: 900px) {
     .hero-section {
         min-height: auto;
@@ -154,21 +260,15 @@
 
     .hero-visual {
         order: -1;
+        max-width: 320px;
+        margin: 0 auto 0;
     }
 
     .node-graph {
         max-width: 240px;
     }
 
-    .node {
-        width: 48px;
-        height: 48px;
-    }
-
-    .node svg {
-        width: 24px;
-        height: 24px;
-    }
+    .node-graph::before { display: none; }
 }
 
 @media (max-width: 600px) {
@@ -217,5 +317,18 @@
     .node svg {
         width: 20px;
         height: 20px;
+    }
+}
+
+/* Reset inline transforms on mobile for stability */
+@media (max-width: 900px) {
+    .node-wrap, .accent-wrap { transform: none !important; }
+    .node-graph { transform: none !important; }
+}
+
+@media (min-width: 1200px) {
+    .hero-container {
+        grid-template-columns: 1.3fr minmax(360px, 520px);
+        gap: 48px;
     }
 }

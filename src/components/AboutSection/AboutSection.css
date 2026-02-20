@@ -311,6 +311,99 @@
 }
 
 /* ==========================================
+   SERVICES GRID (Responsive)
+   ========================================== */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    gap: 2rem; /* spacing between cards */
+    margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    }
+}
+
+@media (min-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+        gap: 3rem;
+    }
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers items horizontally */
+    text-align: center; /* centers text */
+    padding: 1rem;
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, border-color 220ms ease;
+    will-change: transform;
+    background: rgba(255,255,255,0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.service-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(3,3,3,0.35);
+    border-color: rgba(255,255,255,0.06);
+}
+
+.service-card:active {
+    transform: translateY(-2px) scale(0.998);
+}
+
+.service-icon-wrap {
+    background: rgba(28,28,28,0.6);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: background 220ms ease, transform 220ms ease;
+}
+
+.service-card:hover .service-icon-wrap {
+    transform: translateY(-4px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+}
+
+.service-svg {
+    width: 44px;
+    height: 44px;
+    stroke: var(--accent-primary);
+}
+
+/* Responsive padding and spacing refinements */
+.services-grid {
+    gap: 1.75rem; /* slightly tighter default */
+}
+
+@media (min-width: 768px) {
+    .services-grid {
+        gap: 2rem;
+    }
+
+    .service-card {
+        padding: 1.25rem 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .services-grid {
+        gap: 2.5rem;
+    }
+
+    .service-card {
+        padding: 1.5rem 1.25rem;
+    }
+}
+
+/* ==========================================
    RESPONSIVE DESIGN
    ========================================== */
 @media (max-width: 900px) {
@@ -404,3 +497,4 @@
         font-size: 0.95rem;
     }
 }
+
