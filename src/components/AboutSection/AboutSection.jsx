@@ -1,25 +1,7 @@
 import './AboutSection.css'
 import services from './services'
-import TechStack from '../TechStack/TechStack'
-import skillsData from '../../data/skills.json'
 
 export default function AboutSection() {
-    // Map skills.json structure to TechStack's expected prop shape
-    const techCategories = skillsData.map((cat) => ({
-        id: (cat.category || cat.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-        title: cat.category || cat.title,
-        tech: (cat.skills || []).map((s) => {
-            const slug = (s.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-')
-            return {
-                name: s.name,
-                href: s.link || undefined,
-                // prefer a local svg at /assets/icons/{slug}.svg; fall back to the original logo URL at runtime
-                icon: `/assets/icons/${slug}.svg`,
-                externalIcon: s.logo || undefined
-            }
-        })
-    }))
-
     return (
         <section className="section-wrapper page-about" id="about">
             {/* Non-visible anchor to support links that target #letsAbout */}
@@ -57,8 +39,6 @@ export default function AboutSection() {
                         })}
                     </div>
 
-                    {/* Render TechStack directly under the services grid */}
-                    <TechStack categories={techCategories} />
                 </div>
 
             </div>

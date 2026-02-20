@@ -19,7 +19,7 @@ export default function ProjectCard({
                 {/* Description */}
                 <p className="project-description">{description}</p>
 
-                {/* Tech Stack Tags */}
+                {/* Tags */}
                 <div className="project-tags">
                     {tags.map((tag, index) => {
                         const slug = String(tag || '').toLowerCase().replace(/[^a-z0-9]+/g, '-');

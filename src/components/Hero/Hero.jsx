@@ -23,7 +23,7 @@ export default function Hero() {
                     {/* Headline */}
                     <h1 className="hero-title">
                         <span className="title-line">Software Engineer</span>
-                        <span className="title-line title-accent">Backend & Data Engineering</span>
+                        <span className="title-line title-accent">Backend & Data Engineer</span>
                     </h1>
 
                     {/* Subtext */}
@@ -41,6 +41,13 @@ export default function Hero() {
                         <a href="/#contact" className="btn btn-outline" aria-label="Jump to Contact section">
                             Contact
                         </a>
+
+                        {/*
+                        Commented out: Download CV / Resume button (uncomment to enable)
+                        <a href="/assets/resume.pdf" className="btn btn-download" download aria-label="Download CV or Resume (PDF)">
+                            Download CV / Resume
+                        </a>
+                        */}
                     </div>
                 </div>
 

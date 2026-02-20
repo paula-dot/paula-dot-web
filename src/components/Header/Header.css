@@ -40,8 +40,9 @@ header .container {
     padding: 0 0;
 }
 
+/* Give the nav more vertical breathing room so items don't sit too high */
 header .navbar {
-    padding: 8px 24px;
+    padding: 2rem 24px; /* vertical padding: 2rem top & bottom, horizontal preserved */
 }
 
 .navbar {
@@ -87,10 +88,40 @@ header .navbar {
 .nav-links a {
     text-decoration: none;
     color: var(--text-primary);
-    padding: 8px 12px;
-    transition: color 0.2s ease;
+    padding: 10px 12px; /* slightly larger tap target */
+    transition: color 200ms ease, background-color 200ms ease; /* ensure smooth transitions */
     cursor: pointer;
     font-weight: 500;
+    position: relative; /* needed for underline pseudo-element */
+}
+
+/* Animated underline for nav links */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 6px; /* sit just under the link text */
+    height: 2px;
+    background: var(--accent-primary);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+    transition: transform 220ms cubic-bezier(.2,.8,.2,1), opacity 180ms ease;
+    pointer-events: none;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* Slightly reduce underline size and opacity for inactive hover so it's subtle */
+.nav-links a:not(.active):hover::after {
+    opacity: 0.9;
 }
 
 .nav-links a.active {
@@ -98,8 +129,10 @@ header .navbar {
     color: var(--accent-primary);
 }
 
-.nav-links a:hover {
-    color: var(--accent-primary);
+.nav-links a:not(.active):hover {
+    /* Inactive links gracefully transition from muted/dark grey to white on hover to indicate interactivity */
+    color: #ffffff;
+    background: transparent;
 }
 
 .header .nav-links a {
@@ -155,22 +188,7 @@ header .navbar {
 }
 
 /* Accessibility: Skip link */
-.skip-link {
-    position: absolute;
-    left: 1rem;
-    top: -40px;
-    background: #fff;
-    color: var(--text-primary);
-    padding: 8px 12px;
-    border-radius: 6px;
-    z-index: 9999;
-    transition: top 160ms ease, opacity 160ms ease;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-.skip-link:focus {
-    top: 12px;
-    outline: none;
-}
+/* (moved to global stylesheet src/styles/main.css to centralize styles) */
 
 /* Nav toggle (hamburger) - hidden on desktop */
 .nav-toggle {

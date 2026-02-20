@@ -84,24 +84,39 @@
     margin: 0;
 }
 
+/* Default title line color (keeps high contrast for primary line) */
 .title-line {
     color: var(--text-primary);
 }
 
-/* Use cyan -> teal -> periwinkle gradient for the 'Backend & Data Engineering' semantic accent */
+/* Stronger visual hierarchy: make the first title line the visual priority */
+.hero-title .title-line:first-of-type {
+    color: var(--color-text-heading, #FFFFFF); /* bright, primary title */
+    font-weight: 900; /* heavier to lead the hierarchy */
+    /* Keep it visually a touch larger than the accent line on all viewports */
+    font-size: 1.0em; /* inherited from .hero-title; explicit for clarity */
+}
+
+/* Accent/subtitle: smaller and lighter so it doesn't overpower the primary title */
 .title-accent {
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    opacity: 0.88;       /* subtle tone down so it reads as a secondary line */
+    font-weight: 600;    /* lighter than the main title */
+    font-size: 0.85em;   /* slightly smaller (≈85%) to establish hierarchy */
+    letter-spacing: 0.01em;
 }
 
-/* Subtext */
-.hero-subtext {
-    font-size: 1.125rem;
-    line-height: 1.7; /* generous for readability */
-    color: hsl(var(--text-secondary));
-    max-width: 56ch; /* target ~45-60 characters per line */
+/* Ensure on very small screens the relative sizing remains readable */
+@media (max-width: 600px) {
+    .hero-title .title-line:first-of-type {
+        font-size: 1.02em; /* keep primary slightly larger on small screens */
+    }
+    .title-accent {
+        font-size: 0.9em; /* avoid making the accent too tiny on narrow widths */
+    }
 }
 
 /* CTAs */
@@ -393,3 +408,22 @@
         gap: 48px;
     }
 }
+
+/*
+// Commented out: Download CV / Resume button styles (uncomment to enable)
+.btn-download {
+    background: linear-gradient(90deg, var(--color-accent-cyan, var(--palette-cyan)) 0%, var(--c-amber) 100%);
+    color: var(--color-text-dark, var(--bg-primary));
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 700;
+    box-shadow: 0 8px 30px rgba(12, 20, 36, 0.6);
+}
+
+.btn-download:hover,
+.btn-download:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(12, 20, 36, 0.7);
+}
+*/

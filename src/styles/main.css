@@ -159,6 +159,27 @@ h1, h2, h3 {
   color: var(--color-accent-gold);
 }
 
+/* Accessibility: Skip link — hidden off-screen by default, visible on keyboard focus */
+.skip-link {
+  position: absolute;
+  top: -100px; /* Push it completely out of view for mouse users */
+  left: 1rem; /* keep aligned with header content */
+  padding: 0.5rem 1rem;
+  background-color: var(--color-accent-cyan); /* use theme cyan */
+  color: var(--color-text-dark, #0B1120); /* dark text for contrast */
+  font-weight: bold;
+  border-radius: 6px;
+  z-index: 9999; /* ensure it appears above everything when focused */
+  transition: top 0.3s ease, opacity 0.2s ease; /* smooth sliding animation */
+  box-shadow: 0 6px 20px rgba(2,6,23,0.35);
+}
+
+/* Bring it onto the screen ONLY when focused (keyboard users) */
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
 /* Ambient "LED" glow per section (very faint, large radial gradients) */
 .hero-section,
 .page-about,
