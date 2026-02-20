@@ -1,10 +1,41 @@
+import { useState } from 'react';
 import './ContactSection.css';
 
 export default function ContactSection() {
-    const handleSubmit = (e) => {
+    const [sending, setSending] = useState(false);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Demo behavior: replace with real submit integration as needed
-        alert('Message sent (demo) — thank you!');
+        setSending(true);
+
+        const form = e.target;
+        const payload = {
+            email: form.email.value,
+            subject: form.subject.value,
+            message: form.message.value,
+        };
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+
+            const json = await res.json().catch(() => ({}));
+
+            if (res.ok) {
+                form.reset();
+                alert(json.message || 'Message sent — thank you!');
+            } else {
+                alert(json.error || `Failed to send message (status ${res.status})`);
+            }
+        } catch (err) {
+            console.error('Network error sending contact message:', err);
+            alert('Network error. Please try again later.');
+        } finally {
+            setSending(false);
+        }
     };
 
     return (
@@ -44,7 +75,7 @@ export default function ContactSection() {
                                 <path d="M21 7.5L12 13L3 7.5" stroke="#FFB000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
 
-                            <a className="email-link" href="mailto:degrante77@gmail.com">degrante77@gmail.com</a>
+                            <a className="email-link" href="mailto:akelopaul7@gmail.com">akelopaul7@gmail.com</a>
                         </div>
                     </div>
 
@@ -85,8 +116,8 @@ export default function ContactSection() {
                              ></textarea>
                          </div>
 
-                         <button type="submit" className="btn btn-primary send-button">
-                             <span>Send Message</span>
+                         <button type="submit" className="btn btn-primary send-button" disabled={sending}>
+                             <span>{sending ? 'Sending…' : 'Send Message'}</span>
                          </button>
                      </form>
                  </div>
