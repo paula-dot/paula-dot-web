@@ -110,9 +110,10 @@ export function Header() {
                     else window.scrollTo({ top, behavior: 'smooth' });
                 }
 
-                // update hash without causing a jump
+                // update pathname without creating an extra history entry (keep browser navigation working)
                 try {
-                    history.replaceState(null, '', `#${targetId}`);
+                    const newPath = targetId === 'hero' ? '/' : `/${targetId}`;
+                    history.replaceState(null, '', newPath);
                 } catch (e) {
                     // ignore — not critical
                 }
@@ -126,48 +127,73 @@ export function Header() {
         });
     };
 
-    // Use native anchor behavior for clicks: allow browser to scroll using CSS scroll-margin-top; keep menu state in sync
+    // Use client-side navigation for clicks: preventDefault, pushState, and scroll using SPA behaviour
     const onNavClick = (e, id) => {
+        // ensure SPA navigation (no full page reload)
+        if (e && typeof e.preventDefault === 'function') e.preventDefault();
         setOpen(false);
         setActive(id);
-        // don't preventDefault; native navigation will occur
+
+        // update history with a new entry so back/forward behaves naturally
+        try {
+            const path = id === 'hero' ? '/' : `/${id}`;
+            history.pushState(null, '', path);
+        } catch (err) {
+            // ignore
+        }
+
+        // scroll to target section
+        scrollToSection(id);
     };
 
-    // Handle deep links on initial load and hash changes
+    // Handle deep links on initial load and popstate (history navigation)
     useEffect(() => {
-        const tryScrollHash = () => {
+        const tryDeepLink = () => {
+            // prefer hash if present (still supported)
             const hash = window.location.hash;
-            if (!hash) return;
-            const id = hash.replace('#', '');
-            // allow layout to render before measuring
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
+            if (hash) {
+                const id = hash.replace('#', '');
+                if (id) {
                     const el = document.getElementById(id) || document.getElementById(ID_FALLBACK[id]);
                     if (el) scrollToSection(id);
-                });
-            });
+                    return;
+                }
+            }
+
+            // else check pathname (/projects -> projects)
+            const path = window.location.pathname;
+            if (path && path !== '/') {
+                const id = path.replace(/^\//, '');
+                const el = document.getElementById(id) || document.getElementById(ID_FALLBACK[id]);
+                if (el) scrollToSection(id);
+            }
         };
 
-        // scroll once on mount if there's a hash
-        tryScrollHash();
+        // run once on mount
+        tryDeepLink();
 
-        const onHashChange = () => {
-            const id = window.location.hash.replace('#', '');
+        const onPop = () => {
+            const path = window.location.pathname;
+            if (path === '/' || path === '') {
+                scrollToSection('hero');
+                return;
+            }
+            const id = path.replace(/^\//, '');
             if (id) scrollToSection(id);
         };
 
-        window.addEventListener('hashchange', onHashChange);
-        return () => window.removeEventListener('hashchange', onHashChange);
+        window.addEventListener('popstate', onPop);
+        return () => window.removeEventListener('popstate', onPop);
     }, []);
 
     return (
         <header role="banner" className={`${open ? 'open' : ''}${scrolled ? ' scrolled' : ''}`}>
-            <a className="skip-link" href="/#main">Skip to content</a>
+            <a className="skip-link" href="#main">Skip to content</a>
 
             <div className="container">
                 <nav className="navbar" role="navigation" aria-label="Primary">
                     {/* Visually hidden brand for accessibility; logo removed per request */}
-                    <a href="/#hero" className="brand sr-only" onClick={(e) => onNavClick(e, 'hero')}>Paul Akelo</a>
+                    <a href="/" className="brand sr-only" onClick={(e) => onNavClick(e, 'hero')}>Paul Akelo</a>
 
                     <button
                         ref={menuButtonRef}
@@ -184,7 +210,7 @@ export function Header() {
                         {NAV_ITEMS.map(item => (
                             <li key={item.id}>
                                 <a
-                                    href={`/#${item.id}`}
+                                    href={item.id === 'hero' ? '/' : `/${item.id}`}
                                     onClick={(e) => onNavClick(e, item.id)}
                                     className={active === item.id ? 'active' : ''}
                                     aria-current={active === item.id ? 'page' : undefined}

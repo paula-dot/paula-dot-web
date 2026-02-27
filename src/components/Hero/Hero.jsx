@@ -35,10 +35,10 @@ export default function Hero() {
 
                     {/* CTAs */}
                     <div className="hero-cta">
-                        <a href="/#projects" className="btn btn-primary" aria-label="View Projects section">
+                        <a href="/projects" className="btn btn-primary" aria-label="View Projects section">
                             View Projects
                         </a>
-                        <a href="/#contact" className="btn btn-outline" aria-label="Jump to Contact section">
+                        <a href="/contact" className="btn btn-outline" aria-label="Jump to Contact section">
                             Contact
                         </a>
 
