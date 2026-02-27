@@ -9,14 +9,21 @@ export default function AboutSection() {
             <div className="section-container page-inner">
                 {/* SECTION 1: HERO - About Me + Avatar */}
                 <div className="about-hero">
-                    <div className="about-bio">
-                        <div className="bio-block">
-                            <h2 className="page-title">About Me</h2>
-                            <p className="bio-statement">
-                                I'm a backend engineer who transforms complex data into reliable, scalable systems.
-                                I specialize in building robust data pipelines, infrastructure automation, and clean architectures that drive performance.
-                                When I'm not optimizing databases, I'm diving into Geospatial Data Science and GIS, exploring the intersection of spatial data and software.
-                            </p>
+                    {/* two-column responsive grid: left = content, right = aside/visual */}
+                    <div className="about-grid">
+                        <div className="about__content">
+                            <div className="about-bio">
+                                <div className="bio-block">
+                                    <h2 className="page-title">About Me</h2>
+                                    <div className="bio-inner">
+                                        <p className="bio-statement">
+                                            I'm a backend engineer who transforms complex data into reliable, scalable systems.
+                                            I specialize in building robust data pipelines, infrastructure automation, and clean architectures that drive performance.
+                                            When I'm not optimizing databases, I'm diving into Geospatial Data Science and GIS, exploring the intersection of spatial data and software.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

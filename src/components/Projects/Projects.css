@@ -38,6 +38,7 @@
     display: flex;
     flex-direction: column; /* ensure title/intro stack above the grid */
     gap: 12px;
+    align-items: flex-start; /* keep heading and intro left-aligned and allow content-width constraint */
 }
 
 .projects-title {
@@ -53,6 +54,11 @@
     line-height: 1.7;
     color: var(--color-text-body);
     margin: 0;
+    /* Constrain paragraph width for better readability on very wide screens.
+       56rem is approximately Tailwind's max-w-4xl (comfortable reading column).
+       We intentionally do not set width:100% so the max-width will keep the text from
+       stretching fully across large containers while staying left-aligned. */
+    max-width: 56rem;
 }
 
 /* ==========================================
@@ -293,6 +299,11 @@
     .projects-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 24px;
+    }
+
+    /* Relax the intro constraint on smaller screens so the paragraph fills the available width */
+    .projects-intro {
+        max-width: 100%;
     }
 }
 

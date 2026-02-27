@@ -73,9 +73,9 @@
 
 .social-links {
     display: flex;
-    gap: 12px;
+    gap: 16px; /* slightly larger gap so icons are more separated */
     list-style: none;
-    margin: 0;
+    margin: 0 0 0 0;
     padding: 0;
     align-items: center;
 }
@@ -84,8 +84,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 53px; /* larger tappable area */
+    height: 53px; /* larger tappable area */
     border-radius: 8px;
     color: var(--color-text-heading);
     text-decoration: none;
@@ -106,7 +106,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: 0.75rem;
+    margin-top: 1.4rem; /* more separation from social icons */
 }
 
 /* New: unify contact icons at 24x24 and make them not scale with container */
@@ -141,8 +141,9 @@
 
 /* New: make social link icons slightly larger than other contact icons for emphasis */
 .social-link .contact-icon {
-    width: 28px;
-    height: 28px;
+    margin: 0; /* remove prior stray margin */
+    width: 37px; /* larger icon size for emphasis */
+    height: 37px;
 }
 
 /* Right column: form */
@@ -237,9 +238,64 @@
 
     .contact-left {
         padding: 1.5rem;
+        /* center left column content when stacked */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .left-cta {
+        max-width: none; /* allow it to use available width on small screens */
+        width: 100%;
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .email-block {
+        justify-content: center;
     }
 
     .contact-right {
         padding: 1.5rem;
+        align-items: stretch; /* allow form to stretch horizontally */
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Extra-small screens: reduce paddings and font sizes slightly for tight viewports */
+@media (max-width: 420px) {
+    .contact-section {
+        padding: 1rem 0.75rem;
+    }
+
+    .contact-left {
+        padding: 1rem;
+    }
+
+    .contact-right {
+        padding: 1rem;
+    }
+
+    .left-cta h3 {
+        font-size: 1.2rem;
+    }
+
+    .email-link {
+        font-size: 0.95rem;
+        word-break: break-all; /* prevent long email from overflowing */
     }
 }

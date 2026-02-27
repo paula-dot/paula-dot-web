@@ -60,10 +60,89 @@
 }
 
 .bio-statement {
-    font-size: 1.15rem;
-    line-height: 1.75;
+    /* Use text-lg and leading-loose for improved readability across the container */
+    font-size: 1.215rem; /* text-lg */
+    line-height: 2; /* leading-loose */
     color: var(--color-text-body);
     margin: 0;
+    text-align: left;
+    /* Ensure the paragraph spans the full width of its parent and respects padding/border-box */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Constrain paragraph width for readability while keeping it left-aligned */
+.bio-inner {
+    /* Removed fixed max-width so the paragraph spans the full width of the parent container above the cards */
+    max-width: none;
+    width: 100%;
+}
+
+/* Keep paragraph left-aligned even when page-title is centered on small screens */
+@media (max-width: 900px) {
+    .bio-inner {
+        margin-left: auto;
+        margin-right: auto; /* keeps inner block centered on very small viewports */
+    }
+
+    /* but ensure the paragraph text itself remains left-aligned for reading */
+    .bio-statement {
+        text-align: left;
+    }
+}
+
+/* Small-screen override: keep the intro paragraph left-aligned inside the left column */
+@media (max-width: 900px) {
+    .about__content .bio-statement {
+        text-align: left;
+    }
+}
+
+@media (min-width: 901px) {
+    .bio-inner {
+        margin: 0; /* left-aligned within the left column */
+    }
+}
+
+/* Two-column responsive grid for About hero */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.about__content {
+    /* left column (main text) */
+}
+
+.about__aside {
+    /* right column (visual/summary) */
+}
+
+.pill {
+    display: inline-block;
+    padding: 6px 10px;
+    background: rgba(var(--sem-green-rgb, 100, 200, 150), 0.08);
+    color: var(--sem-green);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    .about-grid {
+        /* increased left column to give the bio block more room */
+        grid-template-columns: 70% 30%;
+    }
+
+    .about__content {
+        padding-right: 12px;
+    }
+
+    .about__aside {
+        padding-left: 12px;
+    }
 }
 
 /* ==========================================

@@ -28,7 +28,8 @@
 .hero-container {
     position: relative;
     /* width: 100%; */
-    width: 1400px;
+    width: 100%;
+    max-width: 1400px; /* constrain on very large viewports but avoid fixed overflow on small screens */
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 32px;

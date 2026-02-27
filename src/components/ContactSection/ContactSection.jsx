@@ -44,23 +44,7 @@ export default function ContactSection() {
                 <div className="contact-left" aria-hidden="false">
                     <div className="left-cta">
                         <h3>Let’s build something great together</h3>
-                        <p>I'm currently open to new opportunities and freelance projects. Fill out the form or reach out directly — I'd love to hear about your project.</p>
-
-                        <div className="social-links" aria-label="Social links">
-                            <a href="https://github.com/paula-dot" target="_blank" rel="noopener noreferrer" className="social-link" title="GitHub">
-                                {/* GitHub icon */}
-                                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path d="M12 2C6.477 2 2 6.486 2 12.02c0 4.435 2.868 8.197 6.839 9.525.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.603-3.369-1.342-3.369-1.342-.455-1.157-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.031 1.53 1.031.892 1.53 2.341 1.087 2.91.832.091-.647.35-1.087.636-1.337-2.22-.253-4.555-1.113-4.555-4.952 0-1.094.39-1.988 1.03-2.688-.103-.254-.447-1.274.098-2.656 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.748-1.026 2.748-1.026.547 1.382.203 2.402.1 2.656.64.7 1.028 1.594 1.028 2.688 0 3.848-2.338 4.696-4.567 4.943.36.31.68.923.68 1.863 0 1.344-.012 2.428-.012 2.758 0 .268.18.579.688.481C19.135 20.213 22 16.454 22 12.02 22 6.486 17.523 2 12 2z" fill="currentColor" />
-                                </svg>
-                            </a>
-
-                            <a  href="https://www.linkedin.com/in/paul-akelo-377577291" target="_blank" rel="noopener noreferrer" className="social-link" title="LinkedIn">
-                                {/* LinkedIn icon */}
-                                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-12h4v2a4 4 0 0 1 4-2zM2 9h4v12H2zM4 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" fill="currentColor" />
-                                </svg>
-                            </a>
-                        </div>
+                        <p>I'm currently open to new opportunities and freelance projects. Fill out the form or reach out directly, I'd love to hear about your project.</p>
 
                         <div className="email-block">
                             {/* Email icon */}
@@ -76,6 +60,22 @@ export default function ContactSection() {
                             </svg>
 
                             <a className="email-link" href="mailto:akelopaul7@gmail.com">akelopaul7@gmail.com</a>
+                        </div>
+
+                        <div className="social-links" aria-label="Social links">
+                            <a href="https://github.com/paula-dot" target="_blank" rel="noopener noreferrer" className="social-link" title="GitHub">
+                                {/* GitHub icon */}
+                                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M12 2C6.477 2 2 6.486 2 12.02c0 4.435 2.868 8.197 6.839 9.525.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.603-3.369-1.342-3.369-1.342-.455-1.157-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.031 1.53 1.031.892 1.53 2.341 1.087 2.91.832.091-.647.35-1.087.636-1.337-2.22-.253-4.555-1.113-4.555-4.952 0-1.094.39-1.988 1.03-2.688-.103-.254-.447-1.274.098-2.656 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.748-1.026 2.748-1.026.547 1.382.203 2.402.1 2.656.64.7 1.028 1.594 1.028 2.688 0 3.848-2.338 4.696-4.567 4.943.36.31.68.923.68 1.863 0 1.344-.012 2.428-.012 2.758 0 .268.18.579.688.481C19.135 20.213 22 16.454 22 12.02 22 6.486 17.523 2 12 2z" fill="currentColor" />
+                                </svg>
+                            </a>
+
+                            <a  href="https://www.linkedin.com/in/paul-akelo-377577291" target="_blank" rel="noopener noreferrer" className="social-link" title="LinkedIn">
+                                {/* LinkedIn icon */}
+                                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-12h4v2a4 4 0 0 1 4-2zM2 9h4v12H2zM4 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" fill="currentColor" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
 
